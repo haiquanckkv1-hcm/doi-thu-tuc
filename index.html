@@ -3,63 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tra cứu Đội Thủ Tục</title>
+    <title>Danh Bạ 5 Nhóm Xử Lý Tờ Khai - Đội Thông Quan</title>
     <style>
+        /* CSS CHUNG */
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f7f6;
-            padding-top: 50px;
+            background-color: #f0f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
+
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
             margin: auto;
+            box-sizing: border-box;
         }
-        h1 {
-            color: #003366;
-            font-size: 24px;
-        }
-        h2 {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        input[type="text"] {
-            width: 70%;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 12px 20px;
-            font-size: 16px;
-            background-color: #0056b3;
+
+        /* HEADER LỚN (MÀU XANH DƯƠNG ĐẬM) */
+        header {
+            background-color: #0d47a1; /* Màu xanh dương đậm */
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
+            padding: 20px 40px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            position: relative;
         }
-        button:hover {
-            background-color: #003d82;
+
+        .search-bar {
+            background-color: white;
+            color: #666;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-bar label {
+            margin-right: 15px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .search-bar input::placeholder {
+            color: #aaa;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        .unit-info {
+            text-align: left;
+        }
+
+        .unit-info h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .unit-info p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .title-area h1 {
+            color: #fbc02d; /* Màu vàng đậm */
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+
+        .title-area p.description {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .effective-date {
+            background-color: #fbc02d; /* Màu vàng đậm */
+            color: #0d47a1;
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* THẺ THỐNG KÊ (CARDS) */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-card .number {
+            font-size: 40px;
+            font-weight: bold;
+            color: #0d47a1;
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* KHU VỰC BẢNG DANH SÁCH */
+        .group-table-section {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* HEADER CỦA NHÓM (MÀU XANH DƯƠNG NHẠT) */
+        .group-header {
+            background-color: #bbdefb; /* Màu xanh dương nhạt */
+            color: #0d47a1;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .group-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .group-number {
+            font-size: 48px;
+            font-weight: bold;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .group-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .group-name {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        .group-hs {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .group-commodity {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .group-cbcc-count {
+            background-color: #0d47a1;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-right: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .group-cbcc-count .number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .group-cbcc-count .label {
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        /* BẢNG DANH SÁCH NHÂN VIÊN */
+        .staff-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .staff-table thead th {
+            background-color: white;
+            color: #0d47a1;
+            text-align: left;
+            padding: 15px 25px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .staff-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .staff-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .staff-table tbody td {
+            padding: 15px 25px;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+
+        .staff-table tbody tr.leader-row {
+            background-color: #fbfbfb;
+        }
+
+        /* Định dạng các cột cụ thể */
+        .staff-table tbody td.stt {
+            width: 50px;
+        }
+
+        .staff-table tbody td.ghi-so {
+            color: #666;
+            font-weight: normal;
+        }
+
+        .staff-table tbody td.dien-thoai {
+            color: #0d47a1;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* HUY HIỆU NHIỆM VỤ (BADGES) */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge-nhom-truong {
+            background-color: #fff9c4; /* Vàng nhạt */
+            color: #f57f17; /* Vàng đậm */
+            border: 1px solid #fdd835;
+        }
+
+        .badge-nhom-truong::before {
+            content: '⭐';
+            margin-right: 5px;
+        }
+
+        .badge-tiep-nhan {
+            background-color: #e3f2fd; /* Xanh nhạt */
+            color: #1565c0; /* Xanh đậm */
+            border: 1px solid #90caf9;
+        }
+
+        .badge-cntt {
+            background-color: #e8f5e9; /* Xanh lá nhạt */
+            color: #2e7d32; /* Xanh lá đậm */
+            border: 1px solid #a5d6a7;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>CHI CỤC HẢI QUAN KHU VỰC II</h1>
-        <h2>Cổng Tra Cứu Thông Tin - Đội Thủ Tục</h2>
-        
-        <div>
-            <input type="text" placeholder="Nhập số tờ khai hoặc mã số thuế...">
-            <br>
-            <button type="button">Tra cứu</button>
+    <div class="main-container">
+        <!-- HEADER LỚN -->
+        <header>
+            <div class="search-bar">
+                <label for="search-input">Tìm kiếm:</label>
+                <input type="text" id="search-input" placeholder="Nhập Họ và Tên để tìm...">
+            </div>
+            <div class="header-content">
+                <div class="logo-area">
+                    <!-- Placeholder Logo Hải quan (Base64) - Thay thế đường link src bằng logo thực tế -->
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFnklEQVR4nO2XaXBUVRCGq8qK4o4uWKLVqKMoKiqKILghuIILuCO4I7ggOKAr7kgXN0XwR0EVURQXBFwQlEUURVxAFhURXBFckEWRXRAZ3BBckEV2EXn94fS9S+f1vft6etK3uXN5+vXv++p//TofD4QfHj5E//fD+96vD+fPHy4fHh8eHx4fhveLw7D+8OEh+ePh84cP588fHhcODw/DHx4vHh4Of3h8eHjI8PnDxwshw8Pjwh8eHh8eHh8eHjI8vHgc3i8Ohg8Ph8eHx+HDw+PD4/Dw+PP84ePl9YePH0L8+CHk5YcQl8//54eQlx/f8vK9vDz548N8L/8f8v7b4f3x8H4I8Xh/PDw8PDweHh6PD4+PB/554PD5fMvw8fDxvHj4eFh8vDzeeMvw8Xh5vLy8vDxeHj/88Pn/PF7+vzxeevjx+fzw+fzw+fzw+fzw+V5eeuSlt4df53v56eGv00NeXnrp7enlt7S/8nN5+XN56eWHX5fp4be8v9LTS08vXfp5etLTS5eXnr99f1w+f/9+vny+v/3/v3xfPnp56eWFv4eHLtNDLx8O8uEjHw7S46Pfjw7S46PfD+9vDx+On97ePrp4fvp4fXh58S4eLj4ufgghXFwunC4uHq58XFwuLi4XVz6efHh6erpycvW0pD7fPj196ZGnB8+7XHrI6ZGnBx55evC8y8vnS8/ffD5/etL505NOfb59evrSk6fPfPnS85cnz+dZfvD84Onx8ZafHh9v+enylufD5w3f5w3fyw3fR4+Xv4cnHx5v+T5v+F5v+F5ePn+ep/e89Z633vP/8+f9/f26fPj/9ffryvTx/Lp88vx/Pn+uTx/f8vz9unzy/OnlyfOf+Xz8Zz6f//yYj8/nh5eP9/SUp88PDw/S54f0+SF9fkifH9Lnh/Tx8f7+fnt4f3t4f3p8uPh4Xb5cXlyuXBwuPtz85PP59XvT9798Pnm5cnE5X44XN4f75fHh+ePhS6+PPj6e//7YfHxsPr70+nj/9+8f//458p+P578/Ph4enp7f//3b5/P/+Hj8P//7b5//57/+N/16+r7r5YcQf9vLj5fL48PL4+Hj4+HxeHm8PN4yvDxefn883n9P5/T++TmdPz/+PH88PD48PB4fHh+Pl8f7Y4g/L4f7f4ghPn5+SOTp5Ofkp5OvT/w+/X54vD/++/DwcH//9/p44PfH/++PD5fPz+fnw+fz+fHz8Xz4+Hj48PHw8fHwXvx4efHx8vLx5fPDL/Ph4fXh5Xlx8by8eHl5eHny8fLy4+XHxw/h8cPxfnh8uPh4XDh9XN74vPF54/Pm748XFx8fHx8fHx8fHx8vXnx4enm/eX95v/l8Pn++fD5/vny+/H94erq8fHl6ery8vLx5enp5unw4fTid33z4ffhwOn+4fPh+8+v88PP7w+fX6+fT5efP5edP55PP//8vT5efl55PPr5vPn8un7/Pn/f//5/P/+H/9Oft9/fzX/8Ofv5Ofv4O98uLh4+/bZefl5ffZfjw8PZ4f/v7/vD++PP/8vC//+X/v8/f9//f59f/f58X/77w9/Dy8vLw8vDw8PDw8PDwkOfDw8PDw5vnw8PDm5vnw8Ob58PDm+fDw+PN583v//DwcOHj48XF48Pjw8XDlY+Lpx+XT6efT5ffh5++9PLDywshL4e8fPh4eT98fHx4+vDw4XmX5+UvTz79vMtLjy9Pn//fE5/P78nzP/n49PTo4fnp4enhyfOfp88X/+f/8fP89+vzpafn//enp0/PP58enp70pE8vfTzpS58+n//Pl08vT/p08fHz5U9fL08v//ny8fHz8fXy5fHy5fHx8fHx8fHx8ffjy+fjw8fn7/vL5/P58f/n8+f4F5XpE79b/fQ0AAAAASUVORK5CYII=" alt="Logo Hải quan Việt Nam" class="logo">
+                    <div class="unit-info">
+                        <h3>CHI CỤC HẢI QUAN KHU VỰC III</h3>
+                        <p>Đội Thông quan</p>
+                    </div>
+                </div>
+                <div class="title-area">
+                    <h1>DANH BẠ 5 NHÓM XỨ LÝ TỜ KHAI</h1>
+                    <p class="description">Bộ phận Thủ tục Hàng hóa Xuất nhập khẩu — Phân công theo nhóm Chương HS</p>
+                    <div class="effective-date">📅 Hiệu lực: từ ngày 01/6/2026</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- THẺ THỐNG KÊ -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="number">60</span>
+                <span class="label">TỔNG CBCC</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">5</span>
+                <span class="label">NHÓM XỨ LÝ</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">01 – 98</span>
+                <span class="label">CHƯƠNG HS</span>
+            </div>
         </div>
+
+        <!-- KHU VỰC BẢNG NHÓM 1 -->
+        <main>
+            <div class="group-table-section">
+                <!-- HEADER CỦA NHÓM -->
+                <div class="group-header">
+                    <div class="group-info">
+                        <span class="group-number">01</span>
+                        <div class="group-details">
+                            <span class="group-name">NHÓM 1</span>
+                            <span class="group-hs">Chương 01 – 29</span>
+                            <span class="group-commodity">Động vật sống • Thực phẩm • Sản phẩm khoáng • Hóa chất hữu cơ</span>
+                        </div>
+                    </div>
+                    <div class="group-cbcc-count">
+                        <span class="number">16</span>
+                        <span class="label">CBCC</span>
+                    </div>
+                </div>
+
+                <!-- BẢNG DANH SÁCH NHÂN VIÊN -->
+                <table class="staff-table">
+                    <thead>
+                        <tr>
+                            <th class="stt">STT</th>
+                            <th>HỌ VỀ TÊN</th>
+                            <th>GHI SỐ</th>
+                            <th>NHIỆM VỤ</th>
+                            <th>ĐIỆN THOẠI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="leader-row">
+                            <td class="stt">1</td>
+                            <td class="name">Bùi Khắc Hải</td>
+                            <td class="ghi-so">56</td>
+                            <td><span class="badge badge-nhom-truong">Nhóm trưởng</span></td>
+                            <td class="dien-thoai">0913.596.946</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">2</td>
+                            <td class="name">Lê Thái Dương</td>
+                            <td class="ghi-so">41</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0966.662.689</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">3</td>
+                            <td class="name">Nguyễn Thanh Tùng</td>
+                            <td class="ghi-so">42</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0342.260.386</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">4</td>
+                            <td class="name">Vũ Thị Thanh Hải</td>
+                            <td class="ghi-so">43</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0987.142.000</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">5</td>
+                            <td class="name">Đỗ Thị Hằng</td>
+                            <td class="ghi-so">43A</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0986.623.452</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">6</td>
+                            <td class="name">Trần Thị Tuyết Mai</td>
+                            <td class="ghi-so">45</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0989.929.307</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">7</td>
+                            <td class="name">Dương Quốc Hưng</td>
+                            <td class="ghi-so">46</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0973.668.338</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">8</td>
+                            <td class="name">Trần Thị Huyền Trang</td>
+                            <td class="ghi-so">47</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0912.977.392</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">9</td>
+                            <td class="name">Phạm Huy Khương</td>
+                            <td class="ghi-so">48</td>
+                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
+                            <td class="dien-thoai">0979.483.236</td>
+                        </tr>
+                        <tr>
+                            <td class="stt">10</td>
+                            <td class="name">Đỗ Trường Sơn</td>
+                            <td class="ghi-so">48A</td>
+                            <td><span class="badge badge-cntt">CNTT</span></td>
+                            <td class="dien-thoai">0906.179.039</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
 </body>
 </html>
