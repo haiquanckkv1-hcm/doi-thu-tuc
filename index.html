@@ -298,25 +298,84 @@
 
     </div>
 
-    <!-- SCRIPT XỬ LÝ CHUYỂN TAB -->
+   <!-- SCRIPT XỬ LÝ CHUYỂN TAB VÀ HIỂN THỊ DỮ LIỆU -->
     <script>
+        // DÁN ĐƯỜNG LINK APP SCRIPT CỦA ANH VÀO DẤU NGOẶC KÉP DƯỚI ĐÂY
+        const API_URL = "AKfycbyd6ispI37-N9NYiOdIM7QdRoAyPcbUYLvA6JciS0PW";
+
         function openTab(evt, tabId) {
-            // Bước 1: Ẩn toàn bộ nội dung của các tab
             var tabcontent = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Bước 2: Xóa trạng thái 'active' (màu xanh đậm) ở tất cả các nút
+            for (var i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
             var tablinks = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Bước 3: Hiển thị tab được click và làm đậm nút đó
+            for (var i = 0; i < tablinks.length; i++) tablinks[i].className = tablinks[i].className.replace(" active", "");
             document.getElementById(tabId).style.display = "block";
             evt.currentTarget.className += " active";
         }
+
+        function renderData(dataArray, containerId, isXuatKhau) {
+            let container = document.getElementById(containerId);
+            let html = "";
+            let colorSty = isXuatKhau ? 'style="background-color: #c8e6c9;"' : '';
+            let borderSty = isXuatKhau ? 'style="color: #2e7d32; border-color: #2e7d32;"' : '';
+            let bgSty = isXuatKhau ? 'style="background-color: #2e7d32;"' : ''; 
+
+            dataArray.forEach(group => {
+                let tongCBCC = group.nhanVien.length;
+                
+                // Trích xuất tự động con số từ chữ "tổ nghiệp vụ 1" để làm logo tròn
+                let match = group.tenTo.match(/\d+/);
+                let soTo = match ? match[0].padStart(2, '0') : "00";
+                let tenToInHoa = group.tenTo.toUpperCase();
+
+                html += `<div class="group-table-section">
+                    <div class="group-header" ${colorSty}>
+                        <div class="group-info">
+                            <span class="group-number" ${borderSty}>${soTo}</span>
+                            <div class="group-details">
+                                <span class="group-name" style="font-size: 16px; font-weight: bold; color: #0d47a1;">${tenToInHoa}</span>
+                            </div>
+                        </div>
+                        <div class="group-cbcc-count" ${bgSty}>
+                            <span class="number">${tongCBCC}</span>
+                            <span class="label">CBCC</span>
+                        </div>
+                    </div>
+                    <table class="staff-table">
+                        <thead>
+                            <tr><th>STT</th><th>HỌ VÀ TÊN</th><th>MÃ BÀN</th><th>VAI TRÒ</th><th>ĐIỆN THOẠI</th></tr>
+                        </thead>
+                        <tbody>`;
+                
+                group.nhanVien.forEach(nv => {
+                    let badgeClass = 'badge-tiep-nhan';
+                    let isLeader = nv.vaiTro.toLowerCase().includes('trưởng'); // Nhận diện chữ Tổ trưởng/Nhóm trưởng
+                    if (isLeader) badgeClass = 'badge-nhom-truong';
+                    else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
+
+                    html += `<tr class="${isLeader ? 'leader-row' : ''}">
+                        <td>${nv.stt}</td>
+                        <td>${nv.hoTen}</td>
+                        <td style="color:#666; font-weight:normal">${nv.maBan}</td>
+                        <td><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
+                        <td>${nv.dienThoai}</td>
+                    </tr>`;
+                });
+                html += `</tbody></table></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                renderData(data.nhapKhau, 'nhap-khau', false);
+                renderData(data.xuatKhau, 'xuat-khau', true);
+                document.getElementById('nhap-khau').style.display = 'block'; 
+            })
+            .catch(err => {
+                document.getElementById('loading').innerHTML = "❌ Không thể tải dữ liệu. Vui lòng kiểm tra lại link kết nối.";
+            });
     </script>
 </body>
 </html>
