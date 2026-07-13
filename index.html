@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANH BẠ TỔ NGHIỆP VỤ ĐĂNG KÝ - BỘ PHẬN HÀNG HÓA NHẬP KHẨU</title>
+    <title>DANH BẠ TỔ NGHIỆP VỤ ĐĂNG KÝ</title>
     <style>
         /* CSS CHUNG */
         body {
@@ -21,9 +21,9 @@
             box-sizing: border-box;
         }
 
-        /* HEADER LỚN (MÀU XANH DƯƠNG ĐẬM) */
+        /* HEADER LỚN */
         header {
-            background-color: #0d47a1; /* Màu xanh dương đậm */
+            background-color: #0d47a1;
             color: white;
             padding: 20px 40px;
             border-radius: 20px;
@@ -55,10 +55,6 @@
             font-size: 16px;
             color: #333;
         }
-        
-        .search-bar input::placeholder {
-            color: #aaa;
-        }
 
         .header-content {
             display: flex;
@@ -83,235 +79,89 @@
             text-align: left;
         }
 
-        .unit-info h3 {
-            margin: 0;
-            font-size: 16px;
-            font-weight: normal;
-        }
-
-        .unit-info p {
-            margin: 0;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .title-area h1 {
-            color: #fbc02d; /* Màu vàng đậm */
-            margin: 0 0 10px 0;
-            font-size: 28px;
-        }
-
-        .title-area p.description {
-            margin: 0 0 15px 0;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
+        .unit-info h3 { margin: 0; font-size: 16px; font-weight: normal; }
+        .unit-info p { margin: 0; font-size: 14px; opacity: 0.8; }
+        .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 28px; }
+        .title-area p.description { margin: 0 0 15px 0; font-size: 14px; opacity: 0.8; }
         .effective-date {
-            background-color: #fbc02d; /* Màu vàng đậm */
+            background-color: #fbc02d;
             color: #0d47a1;
             padding: 5px 15px;
             border-radius: 15px;
             display: inline-block;
             font-size: 12px;
             font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* THẺ THỐNG KÊ (CARDS) */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        /* TẠO NÚT CHUYỂN TAB */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
-        .stat-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stat-card .number {
-            font-size: 40px;
-            font-weight: bold;
+        .tab-btn {
+            background-color: #e3f2fd;
             color: #0d47a1;
-        }
-
-        .stat-card .label {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        /* KHU VỰC BẢNG DANH SÁCH */
-        .group-table-section {
-            background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* HEADER CỦA NHÓM (MÀU XANH DƯƠNG NHẠT) */
-        .group-header {
-            background-color: #bbdefb; /* Màu xanh dương nhạt */
-            color: #0d47a1;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 20px 20px 0 0;
-        }
-
-        .group-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .group-number {
-            font-size: 48px;
+            border: 2px solid #0d47a1;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
             font-weight: bold;
-            border: 2px solid white;
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .group-details {
-            display: flex;
-            flex-direction: column;
+        .tab-btn:hover {
+            background-color: #bbdefb;
         }
 
-        .group-name {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #666;
-        }
-
-        .group-hs {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        .group-commodity {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-
-        .group-cbcc-count {
+        /* Nút đang được chọn sẽ đổi màu đậm */
+        .tab-btn.active {
             background-color: #0d47a1;
             color: white;
-            padding: 10px 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-right: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #0d47a1;
         }
 
-        .group-cbcc-count .number {
-            font-size: 24px;
-            font-weight: bold;
+        /* Ẩn các tab không được chọn */
+        .tab-content {
+            display: none;
+            animation: fadeEffect 0.5s; /* Hiệu ứng mờ dần khi chuyển tab */
         }
 
-        .group-cbcc-count .label {
-            font-size: 10px;
-            text-transform: uppercase;
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
         }
 
-        /* BẢNG DANH SÁCH NHÂN VIÊN */
-        .staff-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
+        /* CSS BẢNG DANH SÁCH (Dùng chung cho cả 2 tab) */
+        .group-table-section { background-color: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px;}
+        .group-header { background-color: #bbdefb; color: #0d47a1; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 20px 20px 0 0; }
+        .group-info { display: flex; align-items: center; gap: 15px; }
+        .group-number { font-size: 48px; font-weight: bold; border: 2px solid white; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+        .group-details { display: flex; flex-direction: column; }
+        .group-name { font-size: 12px; text-transform: uppercase; color: #666; }
+        .group-hs { font-size: 20px; font-weight: bold; margin-top: 5px; }
+        .group-commodity { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        .group-cbcc-count { background-color: #0d47a1; color: white; padding: 10px 20px; border-radius: 15px; text-align: center; }
+        .group-cbcc-count .number { font-size: 24px; font-weight: bold; }
+        .group-cbcc-count .label { font-size: 10px; text-transform: uppercase; }
 
-        .staff-table thead th {
-            background-color: white;
-            color: #0d47a1;
-            text-align: left;
-            padding: 15px 25px;
-            text-transform: uppercase;
-            border-bottom: 2px solid #e0e0e0;
-        }
+        .staff-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .staff-table thead th { background-color: white; color: #0d47a1; text-align: left; padding: 15px 25px; text-transform: uppercase; border-bottom: 2px solid #e0e0e0; }
+        .staff-table tbody tr { border-bottom: 1px solid #e0e0e0; }
+        .staff-table tbody td { padding: 15px 25px; color: #0d47a1; font-weight: bold; }
+        .staff-table tbody tr.leader-row { background-color: #fbfbfb; }
+        .staff-table tbody td.stt { width: 50px; }
+        .staff-table tbody td.ghi-so { color: #666; font-weight: normal; }
+        .staff-table tbody td.dien-thoai { color: #0d47a1; font-weight: bold; letter-spacing: 0.5px; }
 
-        .staff-table tbody tr {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .staff-table tbody tr:last-child {
-            border-bottom: none;
-        }
-
-        .staff-table tbody td {
-            padding: 15px 25px;
-            color: #0d47a1;
-            font-weight: bold;
-        }
-
-        .staff-table tbody tr.leader-row {
-            background-color: #fbfbfb;
-        }
-
-        /* Định dạng các cột cụ thể */
-        .staff-table tbody td.stt {
-            width: 50px;
-        }
-
-        .staff-table tbody td.ghi-so {
-            color: #666;
-            font-weight: normal;
-        }
-
-        .staff-table tbody td.dien-thoai {
-            color: #0d47a1;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        /* HUY HIỆU NHIỆM VỤ (BADGES) */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .badge-nhom-truong {
-            background-color: #fff9c4; /* Vàng nhạt */
-            color: #f57f17; /* Vàng đậm */
-            border: 1px solid #fdd835;
-        }
-
-        .badge-nhom-truong::before {
-            content: '⭐';
-            margin-right: 5px;
-        }
-
-        .badge-tiep-nhan {
-            background-color: #e3f2fd; /* Xanh nhạt */
-            color: #1565c0; /* Xanh đậm */
-            border: 1px solid #90caf9;
-        }
-
-        .badge-cntt {
-            background-color: #e8f5e9; /* Xanh lá nhạt */
-            color: #2e7d32; /* Xanh lá đậm */
-            border: 1px solid #a5d6a7;
-        }
+        .badge { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; }
+        .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
+        .badge-nhom-truong::before { content: '⭐'; margin-right: 5px; }
+        .badge-tiep-nhan { background-color: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+        .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
     </style>
 </head>
 <body>
@@ -324,62 +174,50 @@
             </div>
             <div class="header-content">
                 <div class="logo-area">
-                    <!-- Placeholder Logo Hải quan (Base64) - Thay thế đường link src bằng logo thực tế -->
                     <img src="logo-hq.png" alt="Logo Hải quan Việt Nam" class="logo">
                     <div class="unit-info">
                         <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
                         <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
                     </div>
                 </div>
-             <div class="title-area">
-                <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ ĐĂNG KÝ</h1>
-                <p class="description">Bộ phận hàng hóa nhập khẩu - Phân công theo nhóm chương HS</p>
-            <div class="effective-date">📅 Hiệu lực: từ ngày 01/6/2026</div>
-            </div>
+                <div class="title-area">
+                    <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ ĐĂNG KÝ</h1>
+                    <div class="effective-date">📅 Hiệu lực: từ ngày 01/6/2026</div>
+                </div>
             </div>
         </header>
-        
-        <!-- THẺ THỐNG KÊ -->
-        <div class="stats-container">
-            <div class="stat-card">
-                <span class="number">60</span>
-                <span class="label">TỔNG CBCC</span>
-            </div>
-            <div class="stat-card">
-                <span class="number">5</span>
-                <span class="label">NHÓM XỨ LÝ</span>
-            </div>
-            <div class="stat-card">
-                <span class="number">01 – 98</span>
-                <span class="label">CHƯƠNG HS</span>
-            </div>
-        </div>
 
-        <!-- KHU VỰC BẢNG NHÓM 1 -->
-        <main>
+        <!-- NÚT CHUYỂN TAB -->
+       <!-- NÚT CHUYỂN TAB -->
+<div class="tab-buttons">
+    <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
+    <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
+</div>
+
+        <!-- ============================================== -->
+        <!-- TAB 1: BỘ PHẬN NHẬP KHẨU -->
+        <!-- ============================================== -->
+        <div id="nhap-khau" class="tab-content" style="display: block;">
+            
             <div class="group-table-section">
-                <!-- HEADER CỦA NHÓM -->
+                <!-- Tiêu đề nhóm 1 (Nhập khẩu) -->
                 <div class="group-header">
                     <div class="group-info">
                         <span class="group-number">01</span>
                         <div class="group-details">
-                            <span class="group-name">NHÓM 1</span>
+                            <span class="group-name">NHÓM 1 - NHẬP KHẨU</span>
                             <span class="group-hs">Chương 01 – 29</span>
-                            <span class="group-commodity">Động vật sống • Thực phẩm • Sản phẩm khoáng • Hóa chất hữu cơ</span>
+                            <span class="group-commodity">Động vật sống • Thực phẩm • Sản phẩm khoáng...</span>
                         </div>
-                    </div>
-                    <div class="group-cbcc-count">
-                        <span class="number">16</span>
-                        <span class="label">CBCC</span>
                     </div>
                 </div>
 
-                <!-- BẢNG DANH SÁCH NHÂN VIÊN -->
+                <!-- Bảng danh sách nhân viên Nhập Khẩu -->
                 <table class="staff-table">
                     <thead>
                         <tr>
                             <th class="stt">STT</th>
-                            <th>HỌ VỀ TÊN</th>
+                            <th>HỌ VÀ TÊN</th>
                             <th>GHI SỐ</th>
                             <th>NHIỆM VỤ</th>
                             <th>ĐIỆN THOẠI</th>
@@ -400,66 +238,85 @@
                             <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
                             <td class="dien-thoai">0966.662.689</td>
                         </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- KẾT THÚC TAB NHẬP KHẨU -->
+
+
+        <!-- ============================================== -->
+        <!-- TAB 2: BỘ PHẬN XUẤT KHẨU -->
+        <!-- ============================================== -->
+        <div id="xuat-khau" class="tab-content">
+            
+            <div class="group-table-section">
+                <!-- Tiêu đề nhóm 1 (Xuất khẩu) -->
+                <div class="group-header" style="background-color: #c8e6c9;"> <!-- Đổi chút màu xanh lá cho khác biệt -->
+                    <div class="group-info">
+                        <span class="group-number" style="color: #2e7d32; border-color: #2e7d32;">01</span>
+                        <div class="group-details">
+                            <span class="group-name">NHÓM 1 - XUẤT KHẨU</span>
+                            <span class="group-hs" style="color: #2e7d32;">Chương 30 – 98</span>
+                            <span class="group-commodity">Máy móc • Gỗ • Sản phẩm công nghiệp...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bảng danh sách nhân viên Xuất Khẩu -->
+                <table class="staff-table">
+                    <thead>
                         <tr>
-                            <td class="stt">3</td>
-                            <td class="name">Nguyễn Thanh Tùng</td>
-                            <td class="ghi-so">42</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0342.260.386</td>
+                            <th class="stt">STT</th>
+                            <th>HỌ VÀ TÊN</th>
+                            <th>GHI SỐ</th>
+                            <th>NHIỆM VỤ</th>
+                            <th>ĐIỆN THOẠI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Điền tên nhân sự xuất khẩu vào đây -->
+                        <tr class="leader-row">
+                            <td class="stt">1</td>
+                            <td class="name">Nguyễn Văn A</td>
+                            <td class="ghi-so">101</td>
+                            <td><span class="badge badge-nhom-truong">Nhóm trưởng</span></td>
+                            <td class="dien-thoai">0988.111.222</td>
                         </tr>
                         <tr>
-                            <td class="stt">4</td>
-                            <td class="name">Vũ Thị Thanh Hải</td>
-                            <td class="ghi-so">43</td>
+                            <td class="stt">2</td>
+                            <td class="name">Trần Thị B</td>
+                            <td class="ghi-so">102</td>
                             <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0987.142.000</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">5</td>
-                            <td class="name">Đỗ Thị Hằng</td>
-                            <td class="ghi-so">43A</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0986.623.452</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">6</td>
-                            <td class="name">Trần Thị Tuyết Mai</td>
-                            <td class="ghi-so">45</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0989.929.307</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">7</td>
-                            <td class="name">Dương Quốc Hưng</td>
-                            <td class="ghi-so">46</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0973.668.338</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">8</td>
-                            <td class="name">Trần Thị Huyền Trang</td>
-                            <td class="ghi-so">47</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0912.977.392</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">9</td>
-                            <td class="name">Phạm Huy Khương</td>
-                            <td class="ghi-so">48</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0979.483.236</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">10</td>
-                            <td class="name">Đỗ Trường Sơn</td>
-                            <td class="ghi-so">48A</td>
-                            <td><span class="badge badge-cntt">CNTT</span></td>
-                            <td class="dien-thoai">0906.179.039</td>
+                            <td class="dien-thoai">0977.333.444</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </main>
+
+        </div> <!-- KẾT THÚC TAB XUẤT KHẨU -->
+
     </div>
+
+    <!-- SCRIPT XỬ LÝ CHUYỂN TAB -->
+    <script>
+        function openTab(evt, tabId) {
+            // Bước 1: Ẩn toàn bộ nội dung của các tab
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Bước 2: Xóa trạng thái 'active' (màu xanh đậm) ở tất cả các nút
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Bước 3: Hiển thị tab được click và làm đậm nút đó
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 </html>
