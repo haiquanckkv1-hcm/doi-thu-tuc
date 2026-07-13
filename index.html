@@ -8,7 +8,19 @@
         body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
         header { background-color: #1976d2; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-        .logo-area { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+     .logo-area { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 20px; /* Khoảng cách giữa các logo và chữ */
+    margin-bottom: 10px; 
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu màn hình quá nhỏ */
+}
+
+.logo { 
+    height: 80px; /* Điều chỉnh kích thước tùy ý */
+    object-fit: contain;
+}
         .logo { height: 90px; }
     .unit-info h3 { 
     margin: 0; 
@@ -63,21 +75,22 @@
 </head>
 <body>
     <div class="main-container">
-        <header>
-            <div class="logo-area">
-                <img src="logo-hq.png" alt="Logo" class="logo">
-                <div class="unit-info">
-                    <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
-                    <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
-                </div>
-            </div>
-            <div class="title-area">
-                <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ</h1>
-            </div>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà, 02)...">
-            </div>
-        </header>
+    <header>
+    <div class="logo-area">
+        <!-- Logo hiện tại -->
+        <img src="logo-hq.png" alt="Logo" class="logo">
+        
+        <!-- Thông tin đơn vị -->
+        <div class="unit-info">
+            <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
+            <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
+        </div>
+
+        <!-- Logo mới thêm vào bên phải -->
+        <img src="logo-hqkv2.png" alt="Logo HQKV2" class="logo">
+    </div>
+    <!-- ... phần còn lại giữ nguyên -->
+</header>
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
             <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
