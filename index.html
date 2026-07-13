@@ -74,7 +74,8 @@
                 <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ ĐĂNG KÝ</h1>
             </div>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Nhập Họ Tên tìm kiếm...">
+                <!-- Đã cập nhật dòng chữ mờ để mọi người biết có thể gõ "Chương" -->
+                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà, 02)...">
             </div>
         </header>
 
@@ -93,6 +94,9 @@
         const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
         
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
+        
+        // Tạo một biến lưu trữ toàn bộ dữ liệu (để tìm kiếm không phải load lại web)
+        let globalData = { nhapKhau: [], xuatKhau: [] };
 
         function openTab(evt, tabId) {
             var tabcontent = document.getElementsByClassName("tab-content");
@@ -103,9 +107,85 @@
             evt.currentTarget.className += " active";
         }
 
+        // HÀM LOẠI BỎ DẤU TIẾNG VIỆT ĐỂ TÌM KIẾM CHUẨN XÁC
+        function removeAccents(str) {
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+
+        // HÀM XỬ LÝ LOGIC TÌM KIẾM THEO YÊU CẦU
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            let keyword = e.target.value.trim();
+            
+            // Nếu xóa hết chữ, hiển thị lại toàn bộ danh bạ ban đầu
+            if (!keyword) {
+                renderData(globalData.nhapKhau, 'nhap-khau');
+                renderData(globalData.xuatKhau, 'xuat-khau');
+                return;
+            }
+
+            let kwClean = removeAccents(keyword.toLowerCase());
+
+            function filterGroup(dataArray) {
+                let result = [];
+                dataArray.forEach(group => {
+                    let groupName = removeAccents((group.tenTo || "").toLowerCase());
+                    let groupHs = removeAccents((group.chuongHs || "").toLowerCase());
+                    
+                    let isGroupMatch = groupName.includes(kwClean) || groupHs.includes(kwClean);
+                    
+                    // XỬ LÝ TÌM CHƯƠNG THÔNG MINH (VD: Gõ "02" tự động hiểu là "01 - 24")
+                    let numMatch = kwClean.match(/\d+/);
+                    if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || kwClean === numMatch[0] || kwClean === "0"+parseInt(numMatch[0]))) {
+                        let queryNum = parseInt(numMatch[0], 10);
+                        let bounds = (group.chuongHs || "").match(/\d+/g);
+                        if (bounds && bounds.length >= 2) {
+                            let min = parseInt(bounds[0], 10);
+                            let max = parseInt(bounds[bounds.length - 1], 10);
+                            // Kiểm tra xem số gõ vào có nằm trong dải phân công của Tổ không
+                            if (queryNum >= min && queryNum <= max) isGroupMatch = true;
+                        } else if (bounds && bounds.length === 1) {
+                            if (queryNum === parseInt(bounds[0], 10)) isGroupMatch = true;
+                        }
+                    }
+
+                    if (isGroupMatch) {
+                        // Nếu gõ trúng tên Tổ hoặc số Chương, bê nguyên cả Tổ ra hiển thị
+                        result.push(group);
+                    } else {
+                        // Nếu gõ Tên (Ví dụ: "Hà"), đi tìm từng nhân viên xem ai tên Hà
+                        let matchedStaff = group.nhanVien.filter(nv => {
+                            let staffName = removeAccents((nv.hoTen || "").toLowerCase());
+                            let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
+                            return staffName.includes(kwClean) || staffPhone.includes(kwClean);
+                        });
+
+                        // Nếu Tổ này có người tên "Hà", hiển thị Tổ nhưng chỉ liệt kê người tên Hà
+                        if (matchedStaff.length > 0) {
+                            let newGroup = Object.assign({}, group);
+                            newGroup.nhanVien = matchedStaff;
+                            result.push(newGroup);
+                        }
+                    }
+                });
+                return result;
+            }
+
+            // Đẩy kết quả đã lọc ra màn hình tức thì
+            renderData(filterGroup(globalData.nhapKhau), 'nhap-khau');
+            renderData(filterGroup(globalData.xuatKhau), 'xuat-khau');
+        });
+
         function renderData(dataArray, containerId) {
             let container = document.getElementById(containerId);
             let html = "";
+            
+            // Nếu không tìm thấy kết quả
+            if(dataArray.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 40px; color: #666;">
+                    <span style="font-size: 30px;">🔍</span><br><br>Không tìm thấy kết quả nào phù hợp.
+                </div>`;
+                return;
+            }
 
             dataArray.forEach((group, index) => {
                 let tongCBCC = group.nhanVien.length;
@@ -148,7 +228,6 @@
                     if (isLeader) badgeClass = 'badge-nhom-truong';
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
 
-                    // Xử lý chèn số điện thoại ngay dưới tên
                     let phoneHtml = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
@@ -175,6 +254,9 @@
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
+                // Lưu dữ liệu vào biến toàn cục để tìm kiếm
+                globalData = data; 
+                
                 document.getElementById('loading').style.display = 'none';
                 renderData(data.nhapKhau, 'nhap-khau');
                 renderData(data.xuatKhau, 'xuat-khau');
