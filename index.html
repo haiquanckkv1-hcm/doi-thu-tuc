@@ -8,7 +8,7 @@
         /* CSS CHUNG */
         body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 20px; color: #333; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; }
-        header { background-color: #0d47a1; color: white; padding: 20px 40px; border-radius: 20px; margin-bottom: 20px; text-align: center; }
+        header { background-color: #1976d2; color: white; padding: 20px 40px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
         .logo-area { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; }
         .logo { height: 90px; }
         .unit-info h3 { margin: 0; font-size: 16px; font-weight: normal; text-align: left;}
@@ -18,80 +18,109 @@
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 16px; }
 
         .tab-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .tab-btn { background-color: #e3f2fd; color: #0d47a1; border: 2px solid #0d47a1; padding: 12px 30px; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
-        .tab-btn.active { background-color: #0d47a1; color: white; }
+        .tab-btn { background-color: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; padding: 12px 30px; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .tab-btn.active { background-color: #1976d2; color: white; }
         .tab-content { display: none; animation: fadeEffect 0.5s; }
         @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
 
-        /* GIAO DIỆN HEADER TỔ (Theo mẫu bo góc đen mới) */
-        .group-table-section { margin-bottom: 40px; }
-        
-        .custom-group-header {
-            background-color: white;
-            border: 3px solid #1a1a1a;
-            border-radius: 35px;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            position: relative;
+        /* GIAO DIỆN HEADER TỔ ĐA SẮC */
+        .group-table-section { 
+            background-color: white; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 40px; 
         }
         
-        .custom-group-number {
-            font-size: 40px;
-            border: 4px solid #1a1a1a;
+        .theme-group-header {
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .group-header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-group-number {
+            font-size: 38px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.15); 
+            border: 3px solid rgba(255, 255, 255, 0.6); 
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 25px;
-            color: #1a1a1a;
             flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .custom-group-details {
+        .theme-group-details {
             display: flex;
             flex-direction: column;
-            color: #1a1a1a;
-            font-family: Arial, sans-serif;
         }
         
-        .custom-group-name { font-size: 18px; margin-bottom: 6px; }
-        .custom-group-hs { font-size: 16px; margin-bottom: 6px; }
-        .custom-group-commodity { font-size: 15px; }
+        .theme-group-name { 
+            font-size: 13px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+        .theme-group-hs { 
+            font-size: 22px; 
+            font-weight: bold; 
+            margin-bottom: 6px; 
+        }
+        .theme-group-commodity { 
+            font-size: 14px; 
+            font-weight: 500;
+        }
 
-        .custom-cbcc-count {
-            position: absolute;
-            right: 40px;
+        .theme-cbcc-count {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            padding: 10px 18px;
             text-align: center;
-            color: #1a1a1a;
+            min-width: 50px;
         }
         
-        .custom-cbcc-count .number { font-size: 26px; font-weight: bold; }
-        .custom-cbcc-count .label { font-size: 11px; text-transform: uppercase; font-weight: bold;}
+        .theme-cbcc-count .number { font-size: 26px; font-weight: bold; display: block; line-height: 1; margin-bottom: 4px;}
+        .theme-cbcc-count .label { font-size: 12px; font-weight: bold; opacity: 0.9;}
 
-        /* BẢNG DANH SÁCH (Tách rời khỏi header) */
-        .staff-table-container {
-            background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-top: 15px;
+        /* BẢNG DANH SÁCH */
+        .staff-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        
+        /* Cột tiêu đề chuyển sang xám nhạt trung tính để hợp với mọi màu nền */
+        .staff-table th { 
+            background-color: #f4f6f8; 
+            color: #444; 
+            text-align: left; 
+            padding: 15px 25px; 
+            border-bottom: 2px solid #cfd8dc; 
         }
         
-        .staff-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .staff-table th { background-color: #f8f9fa; color: #0d47a1; text-align: left; padding: 15px 25px; border-bottom: 2px solid #e0e0e0; }
-        .staff-table td { padding: 15px 25px; color: #333; font-weight: bold; border-bottom: 1px solid #e0e0e0; }
-        .staff-table tr.leader-row td { background-color: #fbfbfb; }
+        .staff-table td { padding: 15px 25px; border-bottom: 1px solid #eeeeee; }
+        .staff-table tr:last-child td { border-bottom: none; }
+        .staff-table tr.leader-row td { background-color: #fafafa; }
         
-        .badge { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; }
+        .col-text-blue { color: #1976d2; font-weight: bold; }
+        .col-text-gray { color: #666; }
+
+        .badge { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; }
         .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
-        .badge-nhom-truong::before { content: '⭐ '; }
-        .badge-tiep-nhan { background-color: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+        .badge-tiep-nhan { background-color: #f5f5f5; color: #555; border: 1px solid #e0e0e0; }
         .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
         
-        #loading { text-align: center; font-size: 18px; color: #0d47a1; padding: 50px; font-weight: bold; }
+        #loading { text-align: center; font-size: 18px; color: #1976d2; padding: 50px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -123,8 +152,11 @@
     </div>
 
     <script>
-        // DÁN ĐƯỜNG LINK APP SCRIPT CỦA ANH VÀO DẤU NGOẶC KÉP BÊN DƯỚI
-        const API_URL = "https://script.google.com/macros/s/AKfycbxYJnWTTzYeAtUagn0ksXfSn9fmD-Js1_tzzIaJjfPJGIjQkCmV7g9Km8DWxIFG4w7e3Q/exec";
+        // BƯỚC QUAN TRỌNG: DÁN ĐƯỜNG LINK APP SCRIPT VÀO DẤU NGOẶC KÉP DƯỚI ĐÂY
+        const API_URL = "DÁN_LINK_APP_SCRIPT_CỦA_ANH_VÀO_ĐÂY";
+        
+        // Bảng màu cho các tổ (Xanh dương, Xanh lá, Cam, Tím, Xanh ngọc)
+        const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
 
         function openTab(evt, tabId) {
             var tabcontent = document.getElementsByClassName("tab-content");
@@ -139,34 +171,43 @@
             let container = document.getElementById(containerId);
             let html = "";
 
-            dataArray.forEach(group => {
+            dataArray.forEach((group, index) => {
                 let tongCBCC = group.nhanVien.length;
                 
-                // Trích xuất tự động con số từ chữ "tổ nghiệp vụ 1" để làm khung tròn
+                // Tự động gán màu lần lượt theo thứ tự Tổ
+                let bgColor = THEME_COLORS[index % THEME_COLORS.length];
+                
+                // Trích xuất số
                 let match = group.tenTo.match(/\d+/);
                 let soTo = match ? match[0].padStart(2, '0') : "00";
 
-                // HTML cho Header mới (viền bo đen, 3 dòng text)
                 html += `<div class="group-table-section">
-                    <div class="custom-group-header">
-                        <div class="custom-group-number">${soTo}</div>
-                        <div class="custom-group-details">
-                            <div class="custom-group-name">${group.tenTo}</div>
-                            <div class="custom-group-hs">${group.chuongHs}</div>
-                            <div class="custom-group-commodity">${group.moTa}</div>
+                    <div class="theme-group-header" style="background-color: ${bgColor};">
+                        <div class="group-header-left">
+                            <div class="theme-group-number">${soTo}</div>
+                            <div class="theme-group-details">
+                                <div class="theme-group-name">NHÓM ${soTo}</div>
+                                <div class="theme-group-hs">${group.chuongHs}</div>
+                                <div class="theme-group-commodity">${group.moTa}</div>
+                            </div>
                         </div>
-                        <div class="custom-cbcc-count">
-                            <span class="number">${tongCBCC}</span><br>
+                        <div class="theme-cbcc-count">
+                            <span class="number">${tongCBCC}</span>
                             <span class="label">CBCC</span>
                         </div>
                     </div>
                     
-                    <div class="staff-table-container">
-                        <table class="staff-table">
-                            <thead>
-                                <tr><th>STT</th><th>HỌ VÀ TÊN</th><th>MÃ BÀN</th><th>VAI TRÒ</th><th>ĐIỆN THOẠI</th></tr>
-                            </thead>
-                            <tbody>`;
+                    <table class="staff-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>HỌ VÀ TÊN</th>
+                                <th>MÃ BÀN</th>
+                                <th>VAI TRÒ</th>
+                                <th>ĐIỆN THOẠI</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
                 
                 group.nhanVien.forEach(nv => {
                     let badgeClass = 'badge-tiep-nhan';
@@ -175,14 +216,14 @@
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
 
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
-                        <td>${nv.stt}</td>
-                        <td><span style="color: #0d47a1;">${nv.hoTen}</span></td>
-                        <td style="color:#666; font-weight:normal">${nv.maBan}</td>
+                        <td class="col-text-blue">${nv.stt}</td>
+                        <td class="col-text-blue">${nv.hoTen}</td>
+                        <td class="col-text-gray">${nv.maBan}</td>
                         <td><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
-                        <td><span style="color: #0d47a1;">${nv.dienThoai}</span></td>
+                        <td class="col-text-blue">${nv.dienThoai}</td>
                     </tr>`;
                 });
-                html += `</tbody></table></div></div>`;
+                html += `</tbody></table></div>`;
             });
             container.innerHTML = html;
         }
