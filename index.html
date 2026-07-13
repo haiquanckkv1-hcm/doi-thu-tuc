@@ -23,64 +23,41 @@
         .tab-content { display: none; animation: fadeEffect 0.5s; }
         @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
 
-        /* GIAO DIỆN HEADER TỔ ĐA SẮC */
+        /* GIAO DIỆN HEADER TỔ */
         .group-table-section { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 25px; }
         .theme-group-header { color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
         .group-header-left { display: flex; align-items: center; flex: 1; min-width: 0; }
         .theme-group-number { font-size: 28px; font-weight: bold; background-color: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .theme-group-details { display: flex; flex-direction: column; overflow: hidden; }
-        .theme-group-name { font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; white-space: normal; }
+        .theme-group-name { font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
         .theme-group-hs { font-size: 16px; font-weight: bold; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .theme-group-commodity { font-size: 12px; font-weight: 500; opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .theme-cbcc-count { background-color: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 10px; padding: 8px 12px; text-align: center; min-width: 45px; flex-shrink: 0; }
         .theme-cbcc-count .number { font-size: 20px; font-weight: bold; display: block; line-height: 1; margin-bottom: 3px;}
         .theme-cbcc-count .label { font-size: 10px; font-weight: bold; opacity: 0.9;}
 
-        /* BẢNG DANH SÁCH */
-        .staff-table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .staff-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 500px; }
-        .staff-table th { background-color: #f4f6f8; color: #444; text-align: left; padding: 12px 10px; border-bottom: 2px solid #cfd8dc; white-space: nowrap; }
-        .staff-table td { padding: 12px 10px; border-bottom: 1px solid #eeeeee; vertical-align: middle; }
+        /* BẢNG DANH SÁCH - TỐI ƯU CỘT CHO ĐIỆN THOẠI */
+        .staff-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+        .staff-table th { background-color: #f4f6f8; color: #444; padding: 12px 5px; border-bottom: 2px solid #cfd8dc; word-wrap: break-word; text-align: center; }
+        .staff-table td { padding: 12px 5px; border-bottom: 1px solid #eeeeee; vertical-align: middle; word-wrap: break-word; }
         .staff-table tr:last-child td { border-bottom: none; }
         .staff-table tr.leader-row td { background-color: #fafafa; }
+        
         .col-text-blue { color: #1976d2; font-weight: bold; }
-        .col-text-gray { color: #666; }
+        .col-text-gray { color: #666; font-size: 12px; }
 
-        .badge { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; white-space: nowrap; text-align: center;}
+        .badge { display: inline-block; padding: 4px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; text-align: center; word-break: break-word; line-height: 1.2;}
         .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
         .badge-tiep-nhan { background-color: #f5f5f5; color: #555; border: 1px solid #e0e0e0; }
         .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
         
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
 
-        /* GIAO DIỆN NÚT LIÊN HỆ ZALO/VIBER */
-        .contact-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .phone-text { color: inherit; text-decoration: none; }
-        .btn-zalo { background-color: #0068ff; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; text-decoration: none; font-weight: bold; box-shadow: 0 1px 2px rgba(0,0,0,0.1); transition: 0.2s;}
-        .btn-viber { background-color: #7360f2; color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; text-decoration: none; font-weight: bold; box-shadow: 0 1px 2px rgba(0,0,0,0.1); transition: 0.2s;}
-        .btn-zalo:active, .btn-viber:active { transform: scale(0.95); }
-
-        /* ĐIỀU CHỈNH CHO MOBILE */
+        /* ĐIỀU CHỈNH HEADER TRÊN ĐIỆN THOẠI */
         @media screen and (max-width: 600px) {
             .group-header-left { flex-direction: row; align-items: center; }
             .theme-group-number { width: 50px; height: 50px; font-size: 22px; margin-right: 10px; }
-            .staff-table-container { overflow-x: visible; }
-            .staff-table, .staff-table thead, .staff-table tbody, .staff-table th, .staff-table td, .staff-table tr { display: block; width: 100%; min-width: 0; }
-            .staff-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-            .staff-table tr { margin-bottom: 10px; border: 1px solid #e0e0e0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);}
-            .staff-table td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 35%; text-align: right; min-height: 40px; box-sizing: border-box; }
-            .staff-table td:before { position: absolute; top: 12px; left: 10px; width: 30%; padding-right: 10px; white-space: nowrap; text-align: left; font-weight: normal; color: #888; font-size: 12px; }
-            
-            .staff-table td:nth-of-type(1):before { content: "STT"; }
-            .staff-table td:nth-of-type(2):before { content: "HỌ VÀ TÊN"; }
-            .staff-table td:nth-of-type(3):before { content: "MÃ BÀN"; }
-            .staff-table td:nth-of-type(4):before { content: "VAI TRÒ"; }
-            .staff-table td:nth-of-type(5):before { content: "LIÊN HỆ"; }
-
-            /* Căn lề phải cho cụm nút liên hệ trên mobile */
-            .contact-actions { justify-content: flex-end; }
         }
-
     </style>
 </head>
 <body>
@@ -102,8 +79,8 @@
         </header>
 
         <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Thủ tục Hàng hóa Nhập khẩu</button>
-            <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Thủ tục Hàng hóa Xuất khẩu</button>
+            <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
+            <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
         </div>
 
         <div id="loading">⏳ Đang tải dữ liệu danh bạ...</div>
@@ -157,11 +134,10 @@
                         <table class="staff-table">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
-                                    <th>HỌ VÀ TÊN</th>
-                                    <th>MÃ BÀN</th>
-                                    <th>VAI TRÒ</th>
-                                    <th>ĐIỆN THOẠI / ZALO / VIBER</th>
+                                    <th style="width: 12%;">STT</th>
+                                    <th style="width: 46%; text-align: left;">HỌ VÀ TÊN</th>
+                                    <th style="width: 15%;">MÃ BÀN</th>
+                                    <th style="width: 27%;">VAI TRÒ</th>
                                 </tr>
                             </thead>
                             <tbody>`;
@@ -172,31 +148,26 @@
                     if (isLeader) badgeClass = 'badge-nhom-truong';
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
 
-                    // KIẾN TẠO CỤM NÚT ZALO / VIBER TỰ ĐỘNG
-                    let contactHtml = nv.dienThoai;
-                    // Lọc bỏ dấu chấm, khoảng trắng để lấy đúng các chữ số
-                    let phoneClean = nv.dienThoai.replace(/[^\d]/g, ''); 
-                    
-                    if (phoneClean.length >= 9) { // Nếu có số điện thoại hợp lệ
-                        // Zalo xài đầu số bình thường, Viber cần đầu số +84
-                        let viberPhone = phoneClean.startsWith('0') ? '%2B84' + phoneClean.substring(1) : phoneClean;
-                        
-                        contactHtml = `<div class="contact-actions">
-                            <a href="tel:${phoneClean}" class="phone-text">${nv.dienThoai}</a>
-                            <a href="https://zalo.me/${phoneClean}" target="_blank" class="btn-zalo">Zalo</a>
-                            <a href="viber://chat?number=${viberPhone}" class="btn-viber">Viber</a>
+                    // Xử lý chèn số điện thoại ngay dưới tên
+                    let phoneHtml = "";
+                    if (nv.dienThoai) {
+                        let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
+                        phoneHtml = `<div style="margin-top: 4px;">
+                            <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background-color: #e3f2fd; padding: 2px 6px; border-radius: 10px; display: inline-block;">📞 ${nv.dienThoai}</a>
                         </div>`;
                     }
 
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
-                        <td class="col-text-blue">${nv.stt}</td>
-                        <td class="col-text-blue">${nv.hoTen}</td>
-                        <td class="col-text-gray">${nv.maBan}</td>
-                        <td><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
-                        <td class="col-text-blue">${contactHtml}</td>
+                        <td class="col-text-blue" style="text-align: center;">${nv.stt}</td>
+                        <td style="text-align: left;">
+                            <div class="col-text-blue" style="font-size: 14px;">${nv.hoTen}</div>
+                            ${phoneHtml}
+                        </td>
+                        <td class="col-text-gray" style="text-align: center;">${nv.maBan}</td>
+                        <td style="text-align: center;"><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
                     </tr>`;
                 });
-                html += `</tbody></table></div></div>`;
+                html += `</tbody></table></div>`;
             });
             container.innerHTML = html;
         }
