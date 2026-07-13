@@ -6,302 +6,125 @@
     <title>DANH BẠ TỔ NGHIỆP VỤ ĐĂNG KÝ</title>
     <style>
         /* CSS CHUNG */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f9;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
+        body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 20px; color: #333; }
+        .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; }
+        header { background-color: #0d47a1; color: white; padding: 20px 40px; border-radius: 20px; margin-bottom: 20px; text-align: center; }
+        .logo-area { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px; }
+        .logo { height: 90px; }
+        .unit-info h3 { margin: 0; font-size: 16px; font-weight: normal; text-align: left;}
+        .unit-info p { margin: 0; font-size: 14px; opacity: 0.8; text-align: left;}
+        .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 28px; }
+        .search-bar { background-color: white; color: #666; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; margin-bottom: 20px; }
+        .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 16px; }
 
-        .main-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-            box-sizing: border-box;
-        }
+        .tab-buttons { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .tab-btn { background-color: #e3f2fd; color: #0d47a1; border: 2px solid #0d47a1; padding: 12px 30px; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .tab-btn.active { background-color: #0d47a1; color: white; }
+        .tab-content { display: none; animation: fadeEffect 0.5s; }
+        @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
 
-        /* HEADER LỚN */
-        header {
-            background-color: #0d47a1;
-            color: white;
-            padding: 20px 40px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+        /* GIAO DIỆN HEADER TỔ (Theo mẫu bo góc đen mới) */
+        .group-table-section { margin-bottom: 40px; }
+        
+        .custom-group-header {
+            background-color: white;
+            border: 3px solid #1a1a1a;
+            border-radius: 35px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
             position: relative;
         }
-
-        .search-bar {
-            background-color: white;
-            color: #666;
-            padding: 10px 20px;
-            border-radius: 30px;
+        
+        .custom-group-number {
+            font-size: 40px;
+            border: 4px solid #1a1a1a;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .search-bar label {
-            margin-right: 15px;
-            font-weight: bold;
-            color: #666;
-        }
-
-        .search-bar input {
-            border: none;
-            outline: none;
-            flex-grow: 1;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .header-content {
-            display: flex;
             justify-content: center;
-            align-items: center;
+            margin-right: 25px;
+            color: #1a1a1a;
+            flex-shrink: 0;
+        }
+
+        .custom-group-details {
+            display: flex;
             flex-direction: column;
+            color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+        
+        .custom-group-name { font-size: 18px; margin-bottom: 6px; }
+        .custom-group-hs { font-size: 16px; margin-bottom: 6px; }
+        .custom-group-commodity { font-size: 15px; }
+
+        .custom-cbcc-count {
+            position: absolute;
+            right: 40px;
             text-align: center;
+            color: #1a1a1a;
         }
+        
+        .custom-cbcc-count .number { font-size: 26px; font-weight: bold; }
+        .custom-cbcc-count .label { font-size: 11px; text-transform: uppercase; font-weight: bold;}
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+        /* BẢNG DANH SÁCH (Tách rời khỏi header) */
+        .staff-table-container {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: 15px;
         }
-
-        .logo {
-            height: 90px;
-        }
-
-        .unit-info {
-            text-align: left;
-        }
-
-        .unit-info h3 { margin: 0; font-size: 16px; font-weight: normal; }
-        .unit-info p { margin: 0; font-size: 14px; opacity: 0.8; }
-        .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 28px; }
-        .title-area p.description { margin: 0 0 15px 0; font-size: 14px; opacity: 0.8; }
-        .effective-date {
-            background-color: #fbc02d;
-            color: #0d47a1;
-            padding: 5px 15px;
-            border-radius: 15px;
-            display: inline-block;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        /* TẠO NÚT CHUYỂN TAB */
-        .tab-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .tab-btn {
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            border: 2px solid #0d47a1;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .tab-btn:hover {
-            background-color: #bbdefb;
-        }
-
-        /* Nút đang được chọn sẽ đổi màu đậm */
-        .tab-btn.active {
-            background-color: #0d47a1;
-            color: white;
-            border: 2px solid #0d47a1;
-        }
-
-        /* Ẩn các tab không được chọn */
-        .tab-content {
-            display: none;
-            animation: fadeEffect 0.5s; /* Hiệu ứng mờ dần khi chuyển tab */
-        }
-
-        @keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-
-        /* CSS BẢNG DANH SÁCH (Dùng chung cho cả 2 tab) */
-        .group-table-section { background-color: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px;}
-        .group-header { background-color: #bbdefb; color: #0d47a1; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 20px 20px 0 0; }
-        .group-info { display: flex; align-items: center; gap: 15px; }
-        .group-number { font-size: 48px; font-weight: bold; border: 2px solid white; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
-        .group-details { display: flex; flex-direction: column; }
-        .group-name { font-size: 12px; text-transform: uppercase; color: #666; }
-        .group-hs { font-size: 20px; font-weight: bold; margin-top: 5px; }
-        .group-commodity { font-size: 14px; opacity: 0.8; margin-top: 5px; }
-        .group-cbcc-count { background-color: #0d47a1; color: white; padding: 10px 20px; border-radius: 15px; text-align: center; }
-        .group-cbcc-count .number { font-size: 24px; font-weight: bold; }
-        .group-cbcc-count .label { font-size: 10px; text-transform: uppercase; }
-
+        
         .staff-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .staff-table thead th { background-color: white; color: #0d47a1; text-align: left; padding: 15px 25px; text-transform: uppercase; border-bottom: 2px solid #e0e0e0; }
-        .staff-table tbody tr { border-bottom: 1px solid #e0e0e0; }
-        .staff-table tbody td { padding: 15px 25px; color: #0d47a1; font-weight: bold; }
-        .staff-table tbody tr.leader-row { background-color: #fbfbfb; }
-        .staff-table tbody td.stt { width: 50px; }
-        .staff-table tbody td.ghi-so { color: #666; font-weight: normal; }
-        .staff-table tbody td.dien-thoai { color: #0d47a1; font-weight: bold; letter-spacing: 0.5px; }
-
+        .staff-table th { background-color: #f8f9fa; color: #0d47a1; text-align: left; padding: 15px 25px; border-bottom: 2px solid #e0e0e0; }
+        .staff-table td { padding: 15px 25px; color: #333; font-weight: bold; border-bottom: 1px solid #e0e0e0; }
+        .staff-table tr.leader-row td { background-color: #fbfbfb; }
+        
         .badge { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; }
         .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
-        .badge-nhom-truong::before { content: '⭐'; margin-right: 5px; }
+        .badge-nhom-truong::before { content: '⭐ '; }
         .badge-tiep-nhan { background-color: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
         .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        
+        #loading { text-align: center; font-size: 18px; color: #0d47a1; padding: 50px; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- HEADER LỚN -->
         <header>
             <div class="search-bar">
-                <label for="search-input">Tìm kiếm:</label>
-                <input type="text" id="search-input" placeholder="Nhập Họ và Tên để tìm...">
+                <input type="text" id="search-input" placeholder="Nhập Họ và Tên để tìm kiếm...">
             </div>
-            <div class="header-content">
-                <div class="logo-area">
-                    <img src="logo-hq.png" alt="Logo Hải quan Việt Nam" class="logo">
-                    <div class="unit-info">
-                        <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
-                        <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
-                    </div>
+            <div class="logo-area">
+                <img src="logo-hq.png" alt="Logo" class="logo">
+                <div class="unit-info">
+                    <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
+                    <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
                 </div>
-                <div class="title-area">
-                    <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ ĐĂNG KÝ</h1>
-                    <div class="effective-date">📅 Hiệu lực: từ ngày 01/6/2026</div>
-                </div>
+            </div>
+            <div class="title-area">
+                <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ ĐĂNG KÝ</h1>
             </div>
         </header>
 
-        <!-- NÚT CHUYỂN TAB -->
-       <!-- NÚT CHUYỂN TAB -->
-<div class="tab-buttons">
-    <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
-    <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
-</div>
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
+            <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
+        </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 1: BỘ PHẬN NHẬP KHẨU -->
-        <!-- ============================================== -->
-        <div id="nhap-khau" class="tab-content" style="display: block;">
-            
-            <div class="group-table-section">
-                <!-- Tiêu đề nhóm 1 (Nhập khẩu) -->
-                <div class="group-header">
-                    <div class="group-info">
-                        <span class="group-number">01</span>
-                        <div class="group-details">
-                            <span class="group-name">NHÓM 1 - NHẬP KHẨU</span>
-                            <span class="group-hs">Chương 01 – 29</span>
-                            <span class="group-commodity">Động vật sống • Thực phẩm • Sản phẩm khoáng...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bảng danh sách nhân viên Nhập Khẩu -->
-                <table class="staff-table">
-                    <thead>
-                        <tr>
-                            <th class="stt">STT</th>
-                            <th>HỌ VÀ TÊN</th>
-                            <th>GHI SỐ</th>
-                            <th>NHIỆM VỤ</th>
-                            <th>ĐIỆN THOẠI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="leader-row">
-                            <td class="stt">1</td>
-                            <td class="name">Bùi Khắc Hải</td>
-                            <td class="ghi-so">56</td>
-                            <td><span class="badge badge-nhom-truong">Nhóm trưởng</span></td>
-                            <td class="dien-thoai">0913.596.946</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">2</td>
-                            <td class="name">Lê Thái Dương</td>
-                            <td class="ghi-so">41</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0966.662.689</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div> <!-- KẾT THÚC TAB NHẬP KHẨU -->
-
-
-        <!-- ============================================== -->
-        <!-- TAB 2: BỘ PHẬN XUẤT KHẨU -->
-        <!-- ============================================== -->
-        <div id="xuat-khau" class="tab-content">
-            
-            <div class="group-table-section">
-                <!-- Tiêu đề nhóm 1 (Xuất khẩu) -->
-                <div class="group-header" style="background-color: #c8e6c9;"> <!-- Đổi chút màu xanh lá cho khác biệt -->
-                    <div class="group-info">
-                        <span class="group-number" style="color: #2e7d32; border-color: #2e7d32;">01</span>
-                        <div class="group-details">
-                            <span class="group-name">NHÓM 1 - XUẤT KHẨU</span>
-                            <span class="group-hs" style="color: #2e7d32;">Chương 30 – 98</span>
-                            <span class="group-commodity">Máy móc • Gỗ • Sản phẩm công nghiệp...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bảng danh sách nhân viên Xuất Khẩu -->
-                <table class="staff-table">
-                    <thead>
-                        <tr>
-                            <th class="stt">STT</th>
-                            <th>HỌ VÀ TÊN</th>
-                            <th>GHI SỐ</th>
-                            <th>NHIỆM VỤ</th>
-                            <th>ĐIỆN THOẠI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Điền tên nhân sự xuất khẩu vào đây -->
-                        <tr class="leader-row">
-                            <td class="stt">1</td>
-                            <td class="name">Nguyễn Văn A</td>
-                            <td class="ghi-so">101</td>
-                            <td><span class="badge badge-nhom-truong">Nhóm trưởng</span></td>
-                            <td class="dien-thoai">0988.111.222</td>
-                        </tr>
-                        <tr>
-                            <td class="stt">2</td>
-                            <td class="name">Trần Thị B</td>
-                            <td class="ghi-so">102</td>
-                            <td><span class="badge badge-tiep-nhan">Tiếp nhận</span></td>
-                            <td class="dien-thoai">0977.333.444</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div> <!-- KẾT THÚC TAB XUẤT KHẨU -->
-
+        <div id="loading">⏳ Đang tải dữ liệu danh bạ từ máy chủ...</div>
+        <div id="nhap-khau" class="tab-content" style="display: none;"></div>
+        <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
 
-   <!-- SCRIPT XỬ LÝ CHUYỂN TAB VÀ HIỂN THỊ DỮ LIỆU -->
     <script>
-        // DÁN ĐƯỜNG LINK APP SCRIPT CỦA ANH VÀO DẤU NGOẶC KÉP DƯỚI ĐÂY
-        const API_URL = "https://script.google.com/macros/s/AKfycbyd6ispI37-N9NYiOdIM7QdRoAyPcbUYLvA6JciS0PW/dev";
+        // DÁN ĐƯỜNG LINK APP SCRIPT CỦA ANH VÀO DẤU NGOẶC KÉP BÊN DƯỚI
+        const API_URL = "https://script.google.com/macros/s/AKfycbxYJnWTTzYeAtUagn0ksXfSn9fmD-Js1_tzzIaJjfPJGIjQkCmV7g9Km8DWxIFG4w7e3Q/exec";
 
         function openTab(evt, tabId) {
             var tabcontent = document.getElementsByClassName("tab-content");
@@ -312,55 +135,54 @@
             evt.currentTarget.className += " active";
         }
 
-        function renderData(dataArray, containerId, isXuatKhau) {
+        function renderData(dataArray, containerId) {
             let container = document.getElementById(containerId);
             let html = "";
-            let colorSty = isXuatKhau ? 'style="background-color: #c8e6c9;"' : '';
-            let borderSty = isXuatKhau ? 'style="color: #2e7d32; border-color: #2e7d32;"' : '';
-            let bgSty = isXuatKhau ? 'style="background-color: #2e7d32;"' : ''; 
 
             dataArray.forEach(group => {
                 let tongCBCC = group.nhanVien.length;
                 
-                // Trích xuất tự động con số từ chữ "tổ nghiệp vụ 1" để làm logo tròn
+                // Trích xuất tự động con số từ chữ "tổ nghiệp vụ 1" để làm khung tròn
                 let match = group.tenTo.match(/\d+/);
                 let soTo = match ? match[0].padStart(2, '0') : "00";
-                let tenToInHoa = group.tenTo.toUpperCase();
 
+                // HTML cho Header mới (viền bo đen, 3 dòng text)
                 html += `<div class="group-table-section">
-                    <div class="group-header" ${colorSty}>
-                        <div class="group-info">
-                            <span class="group-number" ${borderSty}>${soTo}</span>
-                            <div class="group-details">
-                                <span class="group-name" style="font-size: 16px; font-weight: bold; color: #0d47a1;">${tenToInHoa}</span>
-                            </div>
+                    <div class="custom-group-header">
+                        <div class="custom-group-number">${soTo}</div>
+                        <div class="custom-group-details">
+                            <div class="custom-group-name">${group.tenTo}</div>
+                            <div class="custom-group-hs">${group.chuongHs}</div>
+                            <div class="custom-group-commodity">${group.moTa}</div>
                         </div>
-                        <div class="group-cbcc-count" ${bgSty}>
-                            <span class="number">${tongCBCC}</span>
+                        <div class="custom-cbcc-count">
+                            <span class="number">${tongCBCC}</span><br>
                             <span class="label">CBCC</span>
                         </div>
                     </div>
-                    <table class="staff-table">
-                        <thead>
-                            <tr><th>STT</th><th>HỌ VÀ TÊN</th><th>MÃ BÀN</th><th>VAI TRÒ</th><th>ĐIỆN THOẠI</th></tr>
-                        </thead>
-                        <tbody>`;
+                    
+                    <div class="staff-table-container">
+                        <table class="staff-table">
+                            <thead>
+                                <tr><th>STT</th><th>HỌ VÀ TÊN</th><th>MÃ BÀN</th><th>VAI TRÒ</th><th>ĐIỆN THOẠI</th></tr>
+                            </thead>
+                            <tbody>`;
                 
                 group.nhanVien.forEach(nv => {
                     let badgeClass = 'badge-tiep-nhan';
-                    let isLeader = nv.vaiTro.toLowerCase().includes('trưởng'); // Nhận diện chữ Tổ trưởng/Nhóm trưởng
+                    let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
                     if (isLeader) badgeClass = 'badge-nhom-truong';
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
 
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
                         <td>${nv.stt}</td>
-                        <td>${nv.hoTen}</td>
+                        <td><span style="color: #0d47a1;">${nv.hoTen}</span></td>
                         <td style="color:#666; font-weight:normal">${nv.maBan}</td>
                         <td><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
-                        <td>${nv.dienThoai}</td>
+                        <td><span style="color: #0d47a1;">${nv.dienThoai}</span></td>
                     </tr>`;
                 });
-                html += `</tbody></table></div>`;
+                html += `</tbody></table></div></div>`;
             });
             container.innerHTML = html;
         }
@@ -369,8 +191,8 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById('loading').style.display = 'none';
-                renderData(data.nhapKhau, 'nhap-khau', false);
-                renderData(data.xuatKhau, 'xuat-khau', true);
+                renderData(data.nhapKhau, 'nhap-khau');
+                renderData(data.xuatKhau, 'xuat-khau');
                 document.getElementById('nhap-khau').style.display = 'block'; 
             })
             .catch(err => {
