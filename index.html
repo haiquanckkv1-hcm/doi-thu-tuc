@@ -8,21 +8,7 @@
         body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
         header { background-color: #1976d2; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-    .logo-area { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; /* Căn giữa toàn bộ cụm logo + chữ */
-    gap: 10px;               /* Khoảng cách giữa các thành phần */
-    flex-wrap: nowrap;       /* QUAN TRỌNG: Ép không cho phép xuống dòng */
-    width: 100%;             /* Đảm bảo chiếm đủ chiều rộng */
-    padding: 5px;
-    box-sizing: border-box;
-}
-
-.logo { 
-    height: 80px; /* Điều chỉnh kích thước tùy ý */
-    object-fit: contain;
-}
+        .logo-area { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
         .logo { height: 90px; }
     .unit-info h3 { 
     margin: 0; 
@@ -73,29 +59,25 @@
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
         footer { padding: 20px; text-align: center; border-top: 1px solid #ddd; margin-top: 30px; color: #666; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .footer-logo { height: 40px; }
-        /* Thêm đoạn mới của bạn vào đây: */
-    @media (max-width: 480px) {
-        .logo-side { 
-            height: 50px !important; 
-            width: 50px !important; 
-        }
-        .unit-info h3 { font-size: 13px !important; }
-        .unit-info p { font-size: 10px !important; }
-    }
     </style>
 </head>
 <body>
     <div class="main-container">
- <header>
-    <div class="logo-area">
-        <img src="logo-hq.png" alt="Logo 1" class="logo-side">
-        <div class="unit-info">
-            <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
-            <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
-        </div>
-        <img src="logo-hqkv2.png" alt="Logo 2" class="logo-side">
-    </div>
-</header>
+        <header>
+            <div class="logo-area">
+                <img src="logo-hq.png" alt="Logo" class="logo">
+                <div class="unit-info">
+                    <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
+                    <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
+                </div>
+            </div>
+            <div class="title-area">
+                <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà, 02)...">
+            </div>
+        </header>
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
             <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
