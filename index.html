@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DANH BẠ CÁC TỔ NGHIỆP VỤ</title>
     <style>
-        /* ====================================================
-           CSS CHUNG - THEME "HIỆN ĐẠI & KÍNH MỜ" (GLASSMORPHISM)
-           ==================================================== */
+        /* CSS CHUNG - THEME "HIỆN ĐẠI & KÍNH MỜ" (GLASSMORPHISM) */
         body { 
             font-family: Arial, sans-serif; 
-            /* Nền Gradient mượt mà tạo không gian cho hiệu ứng kính */
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); 
             background-attachment: fixed;
             margin: 0; 
@@ -24,16 +21,16 @@
         
         /* HEADER - HIỆU ỨNG KÍNH MỜ */
         header { 
-            background: rgba(25, 118, 210, 0.85); /* Xanh dương hơi trong suốt */
-            backdrop-filter: blur(12px); /* Làm mờ nền phía sau */
+            background: rgba(25, 118, 210, 0.85);
+            backdrop-filter: blur(12px); 
             -webkit-backdrop-filter: blur(12px);
             color: white; 
             padding: 20px 10px; 
-            border-radius: 16px; /* Bo góc mềm mại hơn */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Viền sáng của kính */
+            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
             margin-bottom: 20px; 
             text-align: center; 
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Bóng đổ có chiều sâu */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); 
         } 
         
         .logo-area { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 15px; gap: 5px; }
@@ -48,7 +45,7 @@
 
         .title-area h1 { color: #ffe082; margin: 0 0 10px 0; font-size: 20px; line-height: 1.3; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); }
         
-        /* THANH TÌM KIẾM - KÍNH TRONG */
+        /* THANH TÌM KIẾM */
         .search-bar { 
             background: rgba(255, 255, 255, 0.9); 
             color: #444; 
@@ -62,7 +59,7 @@
         }
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 14px; width: 100%; background: transparent; }
         
-        /* NÚT TAB - HIỆU ỨNG KÍNH NỔI */
+        /* NÚT TAB */
         .tab-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { 
             background: rgba(255, 255, 255, 0.5); 
@@ -91,13 +88,13 @@
         .tab-content { display: none; animation: fadeEffect 0.4s; }
         @keyframes fadeEffect { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
 
-        /* KHỐI TỔ NGHIỆP VỤ - CHUẨN GLASSMORPHISM */
+        /* KHỐI TỔ NGHIỆP VỤ */
         .group-table-section { 
-            background: rgba(255, 255, 255, 0.65); /* Nền kính trắng trong suốt */
+            background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 16px; 
-            border: 1px solid rgba(255, 255, 255, 1); /* Viền kính chói */
+            border: 1px solid rgba(255, 255, 255, 1); 
             overflow: hidden; 
             box-shadow: 0 8px 32px rgba(0,0,0,0.08); 
             margin-bottom: 25px; 
@@ -114,10 +111,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
         }
         .group-header-left { display: flex; align-items: center; flex: 1; min-width: 0; }
-        
-        /* Chuyển số Tổ về lại hình tròn vì Glassmorphism chuộng đường nét cong mềm */
         .theme-group-number { font-size: 26px; font-weight: bold; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        
         .theme-group-details { display: flex; flex-direction: column; overflow: hidden; }
         .theme-group-name { font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         .theme-group-hs { font-size: 16px; font-weight: bold; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);}
@@ -136,7 +130,6 @@
         .staff-table tr.leader-row td { background-color: rgba(255, 255, 255, 0.6); }
         .col-text-blue { color: #1976d2; font-weight: bold; }
         
-        /* KHUNG CHO SỐ BÀN DẠNG KÍNH NỔI */
         .desk-box { 
             display: inline-block; 
             border: 1px solid rgba(255, 255, 255, 1); 
@@ -156,7 +149,7 @@
         
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
         
-        /* FOOTER ĐOÀN THANH NIÊN - GLASSMORPHISM */
+        /* FOOTER ĐOÀN THANH NIÊN */
         footer { 
             background: rgba(255, 255, 255, 0.65); 
             backdrop-filter: blur(12px);
@@ -193,7 +186,7 @@
                 <h1>DANH BẠ CÁC TỔ NGHIỆP VỤ</h1>
             </div>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà, 02)...">
+                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT, Chương HS hoặc Mô tả (VD: Nông sản)...">
             </div>
         </header>
 
@@ -250,9 +243,10 @@
                     
                     let chuongStr = removeAccents((group.chuongHs || "").toLowerCase());
                     let nameStr = removeAccents((group.tenTo || "").toLowerCase());
+                    let descStr = removeAccents((group.moTa || "").toLowerCase());
                     let isOnlyDigits = /^\d+$/.test(kwClean);
 
-                    if (!isOnlyDigits && (nameStr.includes(kwClean) || chuongStr.includes(kwClean))) {
+                    if (!isOnlyDigits && (nameStr.includes(kwClean) || chuongStr.includes(kwClean) || descStr.includes(kwClean))) {
                         isGroupMatch = true;
                     }
 
@@ -369,13 +363,18 @@
                 group.nhanVien.forEach(nv => {
                     let badgeClass = 'badge-tiep-nhan';
                     let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
-                    if (isLeader) badgeClass = 'badge-nhom-truong';
-                    else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
+                    let displayRole = nv.vaiTro; // Biến hiển thị chữ Vai trò
+                    
+                    if (isLeader) {
+                        badgeClass = 'badge-nhom-truong';
+                        displayRole = `⭐ ${nv.vaiTro}`; // TỰ ĐỘNG THÊM NGÔI SAO VÀNG VÀO TRƯỚC CHỮ TỔ TRƯỞNG
+                    } else if (nv.vaiTro.toLowerCase().includes('cntt')) {
+                        badgeClass = 'badge-cntt';
+                    }
 
                     let phoneHtml = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
-                        // Làm nút số điện thoại glassy luôn
                         phoneHtml = `<div style="margin-top: 4px;">
                             <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background: rgba(255, 255, 255, 0.7); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: inline-block;">📞 ${nv.dienThoai}</a>
                         </div>`;
@@ -390,7 +389,7 @@
                             ${phoneHtml}
                         </td>
                         <td style="text-align: center;">${maBanHtml}</td>
-                        <td style="text-align: center;"><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
+                        <td style="text-align: center;"><span class="badge ${badgeClass}">${displayRole}</span></td>
                     </tr>`;
                 });
                 html += `</tbody></table></div>`;
