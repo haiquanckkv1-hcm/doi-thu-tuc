@@ -215,7 +215,7 @@
             </a>
         </div>
 
-        <!-- Dòng chứa thông tin Đoàn: Căn trái -->
+        <!-- Dòng chứa thông Đoàn: Căn trái -->
         <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px; border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 10px;">
             <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
             <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
@@ -225,8 +225,6 @@
     </footer>
 
     <script>
-        const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
-        
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
         let globalData = { nhapKhau: [], xuatKhau: [] };
 
@@ -414,7 +412,7 @@
             container.innerHTML = html;
         }
 
-        fetch(API_URL)
+        fetch('data.json')
             .then(res => res.json())
             .then(data => {
                 globalData = data; 
@@ -424,7 +422,7 @@
                 document.getElementById('nhap-khau').style.display = 'block'; 
             })
             .catch(err => {
-                document.getElementById('loading').innerHTML = "❌ Không thể tải dữ liệu. Vui lòng kiểm tra lại link kết nối.";
+                document.getElementById('loading').innerHTML = "❌ Không thể tải dữ liệu. Vui lòng kiểm tra lại file data.json.";
             });
     </script>
 </body>
