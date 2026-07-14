@@ -5,47 +5,209 @@
       "chuongHs": "Chương 01 - 24",
       "moTa": "Động vật, Thực phẩm, Nông sản",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Nguyễn Nam Khánh", "maBan": "08", "vaiTro": "Tổ trưởng", "dienThoai": "0972.282.686"},
-        {"stt": "2", "hoTen": "Trình Thị Thanh Huyền", "maBan": "03", "vaiTro": "Thành viên", "dienThoai": "0983.985.079"},
-        {"stt": "3", "hoTen": "Hồ Thụy Mỹ Linh", "maBan": "05", "vaiTro": "Thành viên", "dienThoai": "0908.231.385"},
-        {"stt": "4", "hoTen": "Nguyễn Tuấn Anh", "maBan": "06", "vaiTro": "Thành viên", "dienThoai": "0935.160.676"},
-        {"stt": "5", "hoTen": "Hoàng Việt Anh", "maBan": "30", "vaiTro": "Thành viên", "dienThoai": "0364.382.838"},
-        {"stt": "6", "hoTen": "Nguyễn Thị Hạnh", "maBan": "43", "vaiTro": "Thành viên", "dienThoai": "0901.195.859"},
-        {"stt": "7", "hoTen": "Vũ Hiền An", "maBan": "44", "vaiTro": "Thành viên", "dienThoai": "0977.612.227"}
+        {
+          "stt": 1,
+          "hoTen": "Nguyễn Nam Khánh",
+          "maBan": "08",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0972.282.686"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Trình Thị Thanh Huyền",
+          "maBan": "03",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0983.985.079"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Hồ Thụy Mỹ Linh",
+          "maBan": "05",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0908.231.385"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Nguyễn Tuấn Anh",
+          "maBan": "06",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0935.160.676"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Hoàng Việt Anh",
+          "maBan": "30",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0364.382.838"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Nguyễn Thị Hạnh ",
+          "maBan": "43",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0901.195.859"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Vũ Hiền An",
+          "maBan": "44",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0977.612.227"
+        }
       ]
     },
     {
       "tenTo": "Tổ Nghiệp Vụ 2",
       "chuongHs": "Chương 25 - 40",
-      "moTa": "Khoáng sản, Hóa chất, Plastic",
+      "moTa": "Khoáng sản, Hóa chất, Plastic ",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Tô Hải Yến", "maBan": "36", "vaiTro": "Tổ trưởng", "dienThoai": "0918.319.685"},
-        {"stt": "2", "hoTen": "Lê Thanh Thủy", "maBan": "02", "vaiTro": "Thành viên", "dienThoai": "0907.092.222"},
-        {"stt": "3", "hoTen": "Nguyễn Thị Thủy", "maBan": "03A", "vaiTro": "Thành viên", "dienThoai": "0903.753.183"},
-        {"stt": "4", "hoTen": "Trần Thị Mỹ Tâm", "maBan": "07", "vaiTro": "Thành viên", "dienThoai": "0779.079.888"},
-        {"stt": "5", "hoTen": "Phan Thế Anh", "maBan": "11", "vaiTro": "Thành viên", "dienThoai": "0923.239.393"},
-        {"stt": "6", "hoTen": "Trần Thị Lệ Thu", "maBan": "15", "vaiTro": "Thành viên", "dienThoai": "0949.499.568"},
-        {"stt": "7", "hoTen": "Nguyễn Toàn Định", "maBan": "20", "vaiTro": "Thành viên", "dienThoai": "0907.065.616"},
-        {"stt": "8", "hoTen": "Nguyễn Bảo Ngọc", "maBan": "22", "vaiTro": "Thành viên", "dienThoai": "0949.754.768"},
-        {"stt": "9", "hoTen": "Phạm Thị Yến", "maBan": "26", "vaiTro": "Thành viên", "dienThoai": "0912.405.566"},
-        {"stt": "10", "hoTen": "Phạm Thị Phương Linh", "maBan": "27", "vaiTro": "Thành viên", "dienThoai": "0902.190.726"},
-        {"stt": "11", "hoTen": "Nguyễn Khánh Toàn", "maBan": "28", "vaiTro": "Thành viên", "dienThoai": "0909.027.129"},
-        {"stt": "12", "hoTen": "Trần Trung Kiên", "maBan": "31", "vaiTro": "Thành viên", "dienThoai": "0968.717.339"},
-        {"stt": "13", "hoTen": "Trần Thị Thanh", "maBan": "33", "vaiTro": "Thành viên", "dienThoai": "0982.606.286"},
-        {"stt": "14", "hoTen": "Trần Thị Thanh Xuân", "maBan": "37", "vaiTro": "Thành viên", "dienThoai": "0968.589.779"}
+        {
+          "stt": 1,
+          "hoTen": "Tô Hải Yến",
+          "maBan": "36",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0918.319.685"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Lê Thanh Thủy",
+          "maBan": "02",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0907.092.222"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Nguyễn Thị Thủy",
+          "maBan": "03A",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0903.753.183"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Trần Thị Mỹ Tâm",
+          "maBan": "07",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0779.079.888"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Phan Thế Anh",
+          "maBan": "11",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0923.239.393"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Trần Thị Lệ Thu",
+          "maBan": "15",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0949.499.568"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Nguyễn Toàn Định",
+          "maBan": "20",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0907.065.616"
+        },
+        {
+          "stt": 8,
+          "hoTen": "Nguyễn Bảo Ngọc",
+          "maBan": "22",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0949.754.768"
+        },
+        {
+          "stt": 9,
+          "hoTen": "Phạm Thị Yến",
+          "maBan": "26",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0912.405.566"
+        },
+        {
+          "stt": 10,
+          "hoTen": "Phạm Thị Phương Linh",
+          "maBan": "27",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0902.190.726"
+        },
+        {
+          "stt": 11,
+          "hoTen": "Nguyễn Khánh Toàn",
+          "maBan": "28",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0909.027.129"
+        },
+        {
+          "stt": 12,
+          "hoTen": "Trần Trung Kiên",
+          "maBan": "31",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0968.717.339"
+        },
+        {
+          "stt": 13,
+          "hoTen": "Trần Thị Thanh",
+          "maBan": "33",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0982.606.286"
+        },
+        {
+          "stt": 14,
+          "hoTen": "Trần Thị Thanh Xuân",
+          "maBan": "37",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0968.589.779"
+        }
       ]
     },
     {
       "tenTo": "Tổ Nghiệp Vụ 3",
       "chuongHs": "Chương 41 - 63",
-      "moTa": "Da, Gỗ, Giấy, Dệt may",
+      "moTa": "Da, Gỗ, Giấy, Dệt may ",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Nguyễn Thị Hồng Thắm", "maBan": "20A", "vaiTro": "Tổ trưởng", "dienThoai": "0983.070.607"},
-        {"stt": "2", "hoTen": "Võ Thành Công", "maBan": "15A", "vaiTro": "Thành viên", "dienThoai": "0983.274.045"},
-        {"stt": "3", "hoTen": "Nguyễn Thị Hà Thu", "maBan": "18", "vaiTro": "Thành viên", "dienThoai": "0832.759.999"},
-        {"stt": "4", "hoTen": "Bùi Thế Trọng", "maBan": "23", "vaiTro": "Thành viên", "dienThoai": "0904.818.000"},
-        {"stt": "5", "hoTen": "Đinh Khổng Thu Hồng", "maBan": "29", "vaiTro": "Thành viên", "dienThoai": "0934.832.148"},
-        {"stt": "6", "hoTen": "Trần Gia Khánh", "maBan": "43A", "vaiTro": "Thành viên", "dienThoai": "0904.579.996"}
+        {
+          "stt": 1,
+          "hoTen": "Nguyễn Thị Hồng Thắm",
+          "maBan": "20A",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0983.070.607"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Võ Thành Công",
+          "maBan": "15A",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0983.274.045"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Nguyễn Thị hà Thu",
+          "maBan": "18",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0832.759.999"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Bùi Thế Trọng",
+          "maBan": "23",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0904.818.000"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Đinh Khổng Thu Hồng",
+          "maBan": "29",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0934.832.148"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Trần Gia Khánh",
+          "maBan": "43A",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0904.579.996"
+        }
       ]
     },
     {
@@ -53,14 +215,62 @@
       "chuongHs": "Chương 64 - 83",
       "moTa": "Đá quý, Sắt thép, Kim Loại",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Nguyễn Đăng Hưng", "maBan": "32", "vaiTro": "Tổ trưởng", "dienThoai": "0387.925.046"},
-        {"stt": "2", "hoTen": "Phan Lâm Phú", "maBan": "01", "vaiTro": "Thành viên", "dienThoai": "0906.579.888"},
-        {"stt": "3", "hoTen": "Bùi Thế Việt", "maBan": "16", "vaiTro": "Thành viên", "dienThoai": "0932.351.279"},
-        {"stt": "4", "hoTen": "Trần Thị Mỹ Linh", "maBan": "17", "vaiTro": "Thành viên", "dienThoai": "0945.543.661"},
-        {"stt": "5", "hoTen": "Đới Thị Hương Mai", "maBan": "24", "vaiTro": "Thành viên", "dienThoai": "0989.314.404"},
-        {"stt": "6", "hoTen": "Nguyễn Đăng Khuê", "maBan": "34", "vaiTro": "Thành viên", "dienThoai": "0918.326.262"},
-        {"stt": "7", "hoTen": "Nguyễn Thanh Cần", "maBan": "41", "vaiTro": "Thành viên", "dienThoai": "0903.838.364"},
-        {"stt": "8", "hoTen": "Trần Quốc Việt", "maBan": "42", "vaiTro": "Thành viên", "dienThoai": "0935.446.565"}
+        {
+          "stt": 1,
+          "hoTen": "Nguyễn Đăng Hưng",
+          "maBan": "32",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0387.925.046"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Phan Lâm Phú",
+          "maBan": "01",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0906.579.888"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Bùi Thế Việt",
+          "maBan": "16",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0932.351.279"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Trần Thị Mỹ Linh",
+          "maBan": "17",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0945.543.661"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Đới Thị Hương Mai",
+          "maBan": "24",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0989.314.404"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Nguyễn Đăng Khuê",
+          "maBan": "34",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0918.326.262"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Nguyễn Thanh Cần",
+          "maBan": "41",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0903.838.364"
+        },
+        {
+          "stt": 8,
+          "hoTen": "Trần Quốc Việt",
+          "maBan": "42",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0935.446.565"
+        }
       ]
     },
     {
@@ -68,20 +278,104 @@
       "chuongHs": "Chương 84 - 97",
       "moTa": "Máy Móc, Điện Tử, Xe, Quang học",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Hoàng Ngô Việt Hà", "maBan": "19", "vaiTro": "Tổ trưởng", "dienThoai": "0919.717.777"},
-        {"stt": "2", "hoTen": "Đàm Xuân Hùng", "maBan": "09", "vaiTro": "Thành viên", "dienThoai": "0933.244.663"},
-        {"stt": "3", "hoTen": "Nguyễn Văn Quảng", "maBan": "10", "vaiTro": "Thành viên", "dienThoai": "0934.294.488"},
-        {"stt": "4", "hoTen": "Lê Minh Hoàng", "maBan": "10A", "vaiTro": "Thành viên", "dienThoai": "0905.091.353"},
-        {"stt": "5", "hoTen": "Huỳnh Thoại Tâm Đăng", "maBan": "12", "vaiTro": "Thành viên", "dienThoai": "0919.443.535"},
-        {"stt": "6", "hoTen": "Trần Thị Thu Hương", "maBan": "14", "vaiTro": "Thành viên", "dienThoai": "0902.532.979"},
-        {"stt": "7", "hoTen": "Lương Nhật Linh", "maBan": "21", "vaiTro": "Thành viên", "dienThoai": "0976.555.888"},
-        {"stt": "8", "hoTen": "Trịnh Thanh Bình", "maBan": "25", "vaiTro": "Thành viên", "dienThoai": "0902.812.823"},
-        {"stt": "9", "hoTen": "Nguyễn Văn Hoàn", "maBan": "35", "vaiTro": "Thành viên", "dienThoai": "0909.699.565"},
-        {"stt": "10", "hoTen": "Tô Quang Huy", "maBan": "38", "vaiTro": "Thành viên", "dienThoai": "0919.197.638"},
-        {"stt": "11", "hoTen": "Nguyễn T Thu Huyền", "maBan": "39", "vaiTro": "Thành viên", "dienThoai": "0988.519.052"},
-        {"stt": "12", "hoTen": "Nguyễn Ngọc Lưu", "maBan": "40", "vaiTro": "Thành viên", "dienThoai": "0903.977.919"},
-        {"stt": "13", "hoTen": "Phan Văn Hà", "maBan": "45", "vaiTro": "Thành viên", "dienThoai": "0905.760.706"},
-        {"stt": "14", "hoTen": "Dương Đắc Cường", "maBan": "VP", "vaiTro": "Thành viên", "dienThoai": "0982.132.535"}
+        {
+          "stt": 1,
+          "hoTen": "Hoàng Ngô Việt Hà",
+          "maBan": "19",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0919.717.777"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Đàm Xuân Hùng",
+          "maBan": "09",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0933.244.663"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Nguyễn Văn Quảng",
+          "maBan": "10",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0934.294.488"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Lê Minh Hoàng",
+          "maBan": "10A",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0905.091.353"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Huỳnh Thoại Tâm Đăng",
+          "maBan": "12",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0919.443.535"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Trần Thị Thu Hương",
+          "maBan": "14",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0902.532.979"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Lương Nhật Linh",
+          "maBan": "21",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0976.555.888"
+        },
+        {
+          "stt": 8,
+          "hoTen": "Trịnh Thanh Bình",
+          "maBan": "25",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0902.812.823"
+        },
+        {
+          "stt": 9,
+          "hoTen": "Nguyễn Văn Hoàn",
+          "maBan": "35",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0909.699.565"
+        },
+        {
+          "stt": 10,
+          "hoTen": "Tô Quang Huy",
+          "maBan": "38",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0919.197.638"
+        },
+        {
+          "stt": 11,
+          "hoTen": "Nguyễn T Thu Huyền",
+          "maBan": "39",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0988.519.052"
+        },
+        {
+          "stt": 12,
+          "hoTen": "Nguyễn Ngọc Lưu",
+          "maBan": "40",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0903.977.919"
+        },
+        {
+          "stt": 13,
+          "hoTen": "Phan Văn Hà",
+          "maBan": "45",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0905.760.706"
+        },
+        {
+          "stt": 14,
+          "hoTen": "Dương Đắc Cường",
+          "maBan": "VP",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0982.132.535"
+        }
       ]
     }
   ],
@@ -91,13 +385,55 @@
       "chuongHs": "",
       "moTa": "",
       "nhanVien": [
-        {"stt": "1", "hoTen": "Nguyễn Thị Kim Vân", "maBan": "03", "vaiTro": "Thành viên", "dienThoai": "0903.757.909"},
-        {"stt": "2", "hoTen": "Đỗ Văn Tuấn", "maBan": "05", "vaiTro": "Thành viên", "dienThoai": "0962.051.276"},
-        {"stt": "3", "hoTen": "Trần Thu Hà", "maBan": "06", "vaiTro": "Thành viên", "dienThoai": "0933.839.354"},
-        {"stt": "4", "hoTen": "Trần Thị Phương Lan", "maBan": "07", "vaiTro": "Thành viên", "dienThoai": "0989.667.979"},
-        {"stt": "5", "hoTen": "Nguyễn Thế Định", "maBan": "08", "vaiTro": "Thành viên", "dienThoai": "0355.365.865"},
-        {"stt": "6", "hoTen": "Nguyễn Thị Thanh Thủy", "maBan": "09", "vaiTro": "Thành viên", "dienThoai": "0936.567.811"},
-        {"stt": "7", "hoTen": "Hoàng Quang Vinh", "maBan": "11", "vaiTro": "Thành viên", "dienThoai": "0908.449.732"}
+        {
+          "stt": 1,
+          "hoTen": "Nguyễn Thị Kim Vân",
+          "maBan": "03",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0903.757.909"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Đỗ Văn Tuấn",
+          "maBan": "05",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0962.051.276"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Trần Thu Hà",
+          "maBan": "06",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0933.839.354"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Trần Thị Phương Lan",
+          "maBan": "07",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0989.667.979"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Nguyễn Thế Định",
+          "maBan": "08",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0355.365.865"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Nguyễn Thị Thanh Thủy",
+          "maBan": "09",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0936.567.811"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Hoàng Quang Vinh",
+          "maBan": "11",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0908.449.732"
+        }
       ]
     }
   ]
