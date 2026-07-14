@@ -17,7 +17,8 @@
             flex-direction: column; 
             min-height: 100vh; 
         }
-        .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
+        /* Đã thu hẹp max-width xuống 1000px để giao diện máy tính gọn gàng hơn */
+        .main-container { width: 100%; max-width: 900px; margin: auto; box-sizing: border-box; flex: 1; }
         
         /* HEADER - HIỆU ỨNG KÍNH MỜ */
         header { 
@@ -164,6 +165,40 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.08); 
         }
         .footer-logo { height: 40px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+
+        /* =========================================
+           THIẾT KẾ RESPONSIVE CHO CỘT ĐIỆN THOẠI
+           ========================================= */
+        /* Mặc định (Mobile): Ẩn cột Liên hệ, hiện số ĐT ở dưới tên */
+        .col-stt { width: 12%; }
+        .col-name { width: 46%; }
+        .col-desk { width: 15%; }
+        .col-role { width: 27%; }
+        .col-phone { display: none; } 
+        .phone-mobile { display: block; }
+        .phone-desktop { display: none; }
+
+        /* Giao diện máy tính (Màn hình từ 768px trở lên) */
+        @media (min-width: 768px) {
+            .col-stt { width: 6%; }
+            .col-name { width: 28%; }
+            .col-desk { width: 12%; }
+            .col-role { width: 26%; }
+            .col-phone { display: table-cell; width: 28%; text-align: center; } /* Bật cột Liên hệ */
+            .phone-mobile { display: none; } /* Ẩn số ĐT dưới tên */
+            .phone-desktop { display: block; } /* Bật hiển thị số ĐT và nút Zalo, Viber */
+        }
+        
+        /* CSS cho nút Zalo, Viber */
+        .btn-chat {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: bold; 
+            color: white !important; text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: all 0.2s;
+        }
+        .btn-chat:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .btn-zalo { background: #0068ff; }
+        .btn-viber { background: #7360f2; }
     </style>
 </head>
 <body>
@@ -270,10 +305,8 @@
                     if (!isOnlyDigits) {
                         let groupText = ` ${nameStr} ${chuongStr} ${descStr} `.replace(/[,\-]/g, ' ');
                         if (kwClean.includes(" ")) {
-                            // Cụm từ dài thì tìm chứa bên trong bình thường
                             isGroupMatch = groupText.includes(kwClean);
                         } else {
-                            // Fix Lỗi Tìm Tên Thành Mô Tả: Dùng \b để bắt buộc tìm theo từ trọn vẹn (Vd: "thu" không khớp với "thuc")
                             let regex = new RegExp(`\\b${kwClean}\\b`);
                             if (regex.test(groupText) || kwClean === "chuong" || kwClean === "to") {
                                 isGroupMatch = true;
@@ -281,7 +314,6 @@
                         }
                     }
 
-                    // Vẫn giữ lại phần logic tìm số chương
                     let numMatch = kwClean.match(/\d+/);
                     if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || isOnlyDigits)) {
                         let queryNum = parseInt(numMatch[0], 10);
@@ -313,13 +345,12 @@
                             let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
                             
                             let nameParts = staffNameFull.split(/\s+/);
-                            let tenChinh = nameParts[nameParts.length - 1]; // Chỉ lấy Tên cuối cùng
+                            let tenChinh = nameParts[nameParts.length - 1]; 
                             
                             let nameMatch = false;
                             if (kwClean.includes(" ")) {
                                 nameMatch = staffNameFull.includes(kwClean);
                             } else {
-                                // Fix Lỗi Tìm Tên: Chỉ đối chiếu bằng Tên chính (Chữ cuối), bỏ qua tên đệm
                                 nameMatch = tenChinh.startsWith(kwClean);
                             }
                             
@@ -384,10 +415,11 @@
                         <table class="staff-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 12%;">STT</th>
-                                    <th style="width: 46%; text-align: left;">HỌ VÀ TÊN</th>
-                                    <th style="width: 15%;">MÃ BÀN</th>
-                                    <th style="width: 27%;">VAI TRÒ</th>
+                                    <th class="col-stt">STT</th>
+                                    <th class="col-name" style="text-align: left;">HỌ VÀ TÊN</th>
+                                    <th class="col-desk">MÃ BÀN</th>
+                                    <th class="col-role">VAI TRÒ</th>
+                                    <th class="col-phone">LIÊN HỆ</th>
                                 </tr>
                             </thead>
                             <tbody>`;
@@ -404,24 +436,42 @@
                         badgeClass = 'badge-cntt';
                     }
 
-                    let phoneHtml = "";
+                    // Xử lý nút hiển thị điện thoại
+                    let phoneHtmlMobile = "";
+                    let phoneHtmlDesktop = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
-                        phoneHtml = `<div style="margin-top: 4px;">
+                        // Zalo link: https://zalo.me/số_điện_thoại
+                        let zaloLink = `https://zalo.me/${phoneClean}`;
+                        // Viber link: viber://chat?number=+84...
+                        let viberLink = `viber://chat?number=+84${phoneClean.substring(1)}`;
+
+                        // 1. Dành cho điện thoại (Ẩn nút rườm rà)
+                        phoneHtmlMobile = `<div class="phone-mobile" style="margin-top: 4px;">
                             <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background: rgba(255, 255, 255, 0.7); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: inline-block;">📞 ${nv.dienThoai}</a>
+                        </div>`;
+
+                        // 2. Dành cho máy tính (Có Zalo, Viber)
+                        phoneHtmlDesktop = `<div class="phone-desktop">
+                            <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 13px; font-weight: bold; display: block; margin-bottom: 5px;">📞 ${nv.dienThoai}</a>
+                            <div style="display: flex; gap: 5px; justify-content: center;">
+                                <a href="${zaloLink}" target="_blank" rel="noopener" class="btn-chat btn-zalo">Zalo</a>
+                                <a href="${viberLink}" target="_blank" rel="noopener" class="btn-chat btn-viber">Viber</a>
+                            </div>
                         </div>`;
                     }
 
                     let maBanHtml = nv.maBan ? `<span class="desk-box">${nv.maBan}</span>` : '';
 
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
-                        <td class="col-text-blue" style="text-align: center;">${nv.stt}</td>
-                        <td style="text-align: left;">
+                        <td class="col-stt col-text-blue" style="text-align: center;">${nv.stt}</td>
+                        <td class="col-name" style="text-align: left;">
                             <div class="col-text-blue" style="font-size: 14px;">${nv.hoTen}</div>
-                            ${phoneHtml}
+                            ${phoneHtmlMobile}
                         </td>
-                        <td style="text-align: center;">${maBanHtml}</td>
-                        <td style="text-align: center;"><span class="badge ${badgeClass}">${displayRole}</span></td>
+                        <td class="col-desk" style="text-align: center;">${maBanHtml}</td>
+                        <td class="col-role" style="text-align: center;"><span class="badge ${badgeClass}">${displayRole}</span></td>
+                        <td class="col-phone">${phoneHtmlDesktop}</td>
                     </tr>`;
                 });
                 html += `</tbody></table></div>`;
@@ -429,7 +479,6 @@
             container.innerHTML = html;
         }
 
-        // Đọc dữ liệu từ file JSON tại thư mục gốc
         fetch('data.json')
             .then(res => res.json())
             .then(data => {
