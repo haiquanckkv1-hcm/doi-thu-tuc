@@ -17,8 +17,8 @@
             flex-direction: column; 
             min-height: 100vh; 
         }
-        /* Chiều rộng tối đa của toàn bộ trang web (Gồm cả Header, Bảng, và Footer) */
-        .main-container { width: 100%; max-width: 800px; margin: auto; box-sizing: border-box; flex: 1; display: flex; flex-direction: column; }
+        /* Chiều rộng tối đa của toàn bộ trang web */
+        .main-container { width: 100%; max-width: 1000px; margin: auto; box-sizing: border-box; flex: 1; display: flex; flex-direction: column; }
         
         /* HEADER - HIỆU ỨNG KÍNH MỜ */
         header { 
@@ -60,6 +60,53 @@
         }
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 14px; width: 100%; background: transparent; }
         
+        /* =========================================
+           BANNER FACEBOOK CÓ HIỆU ỨNG CHỮ CHẠY
+           ========================================= */
+        .fb-banner-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+        .fb-banner {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 4px 15px 4px 4px; /* Thu hẹp viền trái ôm lấy logo */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px; /* Độ rộng cố định tạo khung chạy cho chữ */
+            overflow: hidden;
+        }
+        .fb-banner:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.2);
+        }
+        .fb-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            z-index: 2; /* Để logo nổi lên trên chữ */
+            margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .fb-marquee {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+            flex: 1;
+        }
+
         /* NÚT TAB */
         .tab-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { 
@@ -167,7 +214,7 @@
         .footer-logo { height: 40px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
 
         /* =========================================
-           THIẾT KẾ RESPONSIVE CHO CỘT ĐIỆN THOẠI
+           THIẾT KẾ RESPONSIVE
            ========================================= */
         .col-stt { width: 12%; }
         .col-name { width: 46%; }
@@ -225,6 +272,17 @@
             </div>
         </header>
 
+        <!-- BANNER FACEBOOK VỚI HIỆU ỨNG CHỮ CHẠY -->
+        <div class="fb-banner-wrapper">
+            <a href="https://www.facebook.com/profile.php?id=61590637040083" target="_blank" rel="noopener" class="fb-banner">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Logo" class="fb-logo">
+                <!-- Chữ chạy từ TRÁI SANG PHẢI (direction="right"). Tốc độ chạy = 4 -->
+                <marquee direction="left" scrollamount="4" class="fb-marquee">
+                    Cập nhật thông tin mới nhất của đơn vị tại đây
+                </marquee>
+            </a>
+        </div>
+
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
             <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
@@ -237,7 +295,6 @@
         <!-- FOOTER NẰM BÊN TRONG KHUNG MAIN-CONTAINER -->
         <footer>
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                <!-- Dòng chứa thông tin Đoàn: Căn trái -->
                 <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
                     <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
                     <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
@@ -245,7 +302,6 @@
                     </p>
                 </div>
                 
-                <!-- Dòng chứa bộ đếm: Căn phải -->
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <p style="margin: 0; font-size: 10px; color: #1976d2; font-weight: bold; text-transform: uppercase;">Lượt truy cập:</p>
                     <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="hitwebcounter.com/">
@@ -254,7 +310,6 @@
                 </div>
             </div>
 
-            <!-- ĐỊA CHỈ NẰM DƯỚI CÙNG FOOTER -->
             <div style="border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 12px; text-align: center; width: 100%;">
                 <a href="https://maps.app.goo.gl/9mAUxfHJNd419zzo6" target="_blank" rel="noopener" style="color: #1976d2; text-decoration: none; font-size: clamp(10px, 3vw, 13px); display: inline-flex; align-items: center; gap: 4px; font-weight: bold; padding: 6px 12px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid rgba(25, 118, 210, 0.2); transition: all 0.2s; white-space: normal; line-height: 1.3;">
                     📍 Cổng B khu cảng Cát Lái, số 02 đường Lê Phụng Hiểu, phường Cát Lái, Quận 2, TP.HCM
@@ -412,7 +467,6 @@
                     
                     <div class="staff-table-container">
                         <table class="staff-table">
-                            <!-- BẢNG MÀU THEAD ĐƯỢC CẬP NHẬT TẠI ĐÂY -->
                             <thead style="background-color: ${bgColor}15;">
                                 <tr>
                                     <th class="col-stt">STT</th>
