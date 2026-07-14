@@ -379,15 +379,28 @@
                 
                 group.nhanVien.forEach(nv => {
                     let badgeClass = 'badge-tiep-nhan';
-                    let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
-                    let displayRole = nv.vaiTro; // Biến hiển thị chữ Vai trò
-                    
-                    if (isLeader) {
-                        badgeClass = 'badge-nhom-truong';
-                        displayRole = `⭐ ${nv.vaiTro}`; // TỰ ĐỘNG THÊM NGÔI SAO VÀNG VÀO TRƯỚC CHỮ TỔ TRƯỞNG
-                    } else if (nv.vaiTro.toLowerCase().includes('cntt')) {
-                        badgeClass = 'badge-cntt';
-                    }
+                  // Thay thế đoạn xử lý badge trong vòng lặp group.nhanVien.forEach...
+let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
+let displayRole = nv.vaiTro; 
+
+if (isLeader) {
+    badgeClass = 'badge-nhom-truong';
+    // Đảm bảo nội dung luôn nằm trên 1 hàng với white-space: nowrap
+    displayRole = `<span style="white-space: nowrap; display: inline-block;">⭐ ${nv.vaiTro}</span>`; 
+} else if (nv.vaiTro.toLowerCase().includes('cntt')) {
+    badgeClass = 'badge-cntt';
+}
+
+// ... đoạn phía dưới giữ nguyên
+html += `<tr class="${isLeader ? 'leader-row' : ''}">
+    <td class="col-text-blue" style="text-align: center;">${nv.stt}</td>
+    <td style="text-align: left;">
+        <div class="col-text-blue" style="font-size: 14px;">${nv.hoTen}</div>
+        ${phoneHtml}
+    </td>
+    <td style="text-align: center;">${maBanHtml}</td>
+    <td style="text-align: center;"><span class="badge ${badgeClass}">${displayRole}</span></td>
+</tr>`;
 
                     let phoneHtml = "";
                     if (nv.dienThoai) {
