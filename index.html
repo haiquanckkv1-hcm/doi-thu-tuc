@@ -17,8 +17,8 @@
             flex-direction: column; 
             min-height: 100vh; 
         }
-        /* Đã thu hẹp max-width xuống 1000px để giao diện máy tính gọn gàng hơn */
-        .main-container { width: 100%; max-width: 900px; margin: auto; box-sizing: border-box; flex: 1; }
+        /* Chiều rộng tối đa của toàn bộ trang web (Gồm cả Header, Bảng, và Footer) */
+        .main-container { width: 100%; max-width: 1000px; margin: auto; box-sizing: border-box; flex: 1; display: flex; flex-direction: column; }
         
         /* HEADER - HIỆU ỨNG KÍNH MỜ */
         header { 
@@ -86,7 +86,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3); 
         }
-        .tab-content { display: none; animation: fadeEffect 0.4s; }
+        .tab-content { display: none; animation: fadeEffect 0.4s; flex: 1; }
         @keyframes fadeEffect { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
 
         /* KHỐI TỔ NGHIỆP VỤ */
@@ -150,7 +150,7 @@
         
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
         
-        /* FOOTER ĐOÀN THANH NIÊN */
+        /* FOOTER ĐOÀN THANH NIÊN - Đã chỉnh margin để thẳng hàng với bảng */
         footer { 
             background: rgba(255, 255, 255, 0.65); 
             backdrop-filter: blur(12px);
@@ -158,7 +158,7 @@
             border: 1px solid rgba(255, 255, 255, 0.9); 
             border-radius: 16px; 
             padding: 15px; 
-            margin: 30px 10px; 
+            margin: 20px 0 10px 0; 
             display: flex; 
             flex-direction: column;
             gap: 15px; 
@@ -169,7 +169,6 @@
         /* =========================================
            THIẾT KẾ RESPONSIVE CHO CỘT ĐIỆN THOẠI
            ========================================= */
-        /* Mặc định (Mobile): Ẩn cột Liên hệ, hiện số ĐT ở dưới tên */
         .col-stt { width: 12%; }
         .col-name { width: 46%; }
         .col-desk { width: 15%; }
@@ -178,18 +177,16 @@
         .phone-mobile { display: block; }
         .phone-desktop { display: none; }
 
-        /* Giao diện máy tính (Màn hình từ 768px trở lên) */
         @media (min-width: 768px) {
             .col-stt { width: 6%; }
             .col-name { width: 28%; }
             .col-desk { width: 12%; }
             .col-role { width: 26%; }
-            .col-phone { display: table-cell; width: 28%; text-align: center; } /* Bật cột Liên hệ */
-            .phone-mobile { display: none; } /* Ẩn số ĐT dưới tên */
-            .phone-desktop { display: block; } /* Bật hiển thị số ĐT và nút Zalo, Viber */
+            .col-phone { display: table-cell; width: 28%; text-align: center; } 
+            .phone-mobile { display: none; } 
+            .phone-desktop { display: block; } 
         }
         
-        /* CSS cho nút Zalo, Viber */
         .btn-chat {
             display: inline-flex; align-items: center; justify-content: center;
             padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: bold; 
@@ -202,7 +199,9 @@
     </style>
 </head>
 <body>
+    <!-- Bao bọc tất cả (kể cả Header và Footer) vào trong main-container -->
     <div class="main-container">
+        
         <header>
             <div class="logo-area">
                 <div class="logo-box">
@@ -223,7 +222,7 @@
                 <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm...">
             </div>
             <div style="font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 5px; text-align: center; font-style: italic;">
-                Gợi ý: Tìm theo Tên, SĐT, Chương (01-97) hoặc Mô tả hàng hóa (Nông sản, Động vật...)
+                Gợi ý: Tìm theo Tên, SĐT, Chương (01-24) hoặc Mô tả hàng hóa (Nông sản, Động vật...)
             </div>
         </header>
 
@@ -235,35 +234,36 @@
         <div id="loading">⏳ Đang tải dữ liệu danh bạ...</div>
         <div id="nhap-khau" class="tab-content" style="display: none;"></div>
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
-    </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-            <!-- Dòng chứa thông tin Đoàn: Căn trái -->
-            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
-                <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
-                <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
-                    Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
-                </p>
+        <!-- FOOTER NẰM BÊN TRONG KHUNG MAIN-CONTAINER -->
+        <footer>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <!-- Dòng chứa thông tin Đoàn: Căn trái -->
+                <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
+                    <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
+                    <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
+                        Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
+                    </p>
+                </div>
+                
+                <!-- Dòng chứa bộ đếm: Căn phải -->
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <p style="margin: 0; font-size: 10px; color: #1976d2; font-weight: bold; text-transform: uppercase;">Lượt truy cập:</p>
+                    <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="hitwebcounter.com/">
+                        <img src="https://www.hitwebcounter.com/counter/counter.php?page=21508735&amp;style=0024&amp;nbdigits=5&amp;type=page" alt="hitwebcounter.com/" decoding="async" style="border:0;height:22px;" />
+                    </a>
+                </div>
             </div>
-            
-            <!-- Dòng chứa bộ đếm: Căn phải -->
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <p style="margin: 0; font-size: 10px; color: #1976d2; font-weight: bold; text-transform: uppercase;">Lượt truy cập:</p>
-                <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="hitwebcounter.com/">
-                    <img src="https://www.hitwebcounter.com/counter/counter.php?page=21508735&amp;style=0024&amp;nbdigits=5&amp;type=page" alt="hitwebcounter.com/" decoding="async" style="border:0;height:22px;" />
+
+            <!-- ĐỊA CHỈ NẰM DƯỚI CÙNG FOOTER -->
+            <div style="border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 12px; text-align: center; width: 100%;">
+                <a href="https://maps.app.goo.gl/9mAUxfHJNd419zzo6" target="_blank" rel="noopener" style="color: #1976d2; text-decoration: none; font-size: clamp(10px, 3vw, 13px); display: inline-flex; align-items: center; gap: 4px; font-weight: bold; padding: 6px 12px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid rgba(25, 118, 210, 0.2); transition: all 0.2s; white-space: normal; line-height: 1.3;">
+                    📍 Cổng B khu cảng Cát Lái, số 02 đường Lê Phụng Hiểu, phường Cát Lái, Quận 2, TP.HCM
                 </a>
             </div>
-        </div>
+        </footer>
 
-        <!-- ĐỊA CHỈ NẰM DƯỚI CÙNG FOOTER -->
-        <div style="border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 12px; text-align: center; width: 100%;">
-            <a href="https://maps.app.goo.gl/9mAUxfHJNd419zzo6" target="_blank" rel="noopener" style="color: #1976d2; text-decoration: none; font-size: clamp(10px, 3vw, 13px); display: inline-flex; align-items: center; gap: 4px; font-weight: bold; padding: 6px 12px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid rgba(25, 118, 210, 0.2); transition: all 0.2s; white-space: normal; line-height: 1.3;">
-                📍 Cổng B khu cảng Cát Lái, số 02 đường Lê Phụng Hiểu, phường Cát Lái, Quận 2, TP.HCM
-            </a>
-        </div>
-    </footer>
+    </div> <!-- KẾT THÚC MAIN-CONTAINER Ở ĐÂY -->
 
     <script>
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
@@ -436,22 +436,17 @@
                         badgeClass = 'badge-cntt';
                     }
 
-                    // Xử lý nút hiển thị điện thoại
                     let phoneHtmlMobile = "";
                     let phoneHtmlDesktop = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
-                        // Zalo link: https://zalo.me/số_điện_thoại
                         let zaloLink = `https://zalo.me/${phoneClean}`;
-                        // Viber link: viber://chat?number=+84...
                         let viberLink = `viber://chat?number=+84${phoneClean.substring(1)}`;
 
-                        // 1. Dành cho điện thoại (Ẩn nút rườm rà)
                         phoneHtmlMobile = `<div class="phone-mobile" style="margin-top: 4px;">
                             <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background: rgba(255, 255, 255, 0.7); padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: inline-block;">📞 ${nv.dienThoai}</a>
                         </div>`;
 
-                        // 2. Dành cho máy tính (Có Zalo, Viber)
                         phoneHtmlDesktop = `<div class="phone-desktop">
                             <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 13px; font-weight: bold; display: block; margin-bottom: 5px;">📞 ${nv.dienThoai}</a>
                             <div style="display: flex; gap: 5px; justify-content: center;">
