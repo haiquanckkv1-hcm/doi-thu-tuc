@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DANH BẠ CÁC TỔ NGHIỆP VỤ</title>
     <style>
-        /* CSS CHUNG */
-        body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        /* CSS CHUNG - THEME HÀNH CHÍNH TỐI GIẢN */
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
         
-        /* HEADER BỐ CỤC LINH HOẠT - BẢO VỆ CHỮ 1 DÒNG */
-        header { background-color: #1976d2; color: white; padding: 20px 10px; border-radius: 12px; margin-bottom: 20px; text-align: center; } 
+        /* HEADER - VUÔNG VỨC & PHẲNG HƠN */
+        header { background-color: #1976d2; color: white; padding: 20px 10px; border-radius: 8px; margin-bottom: 20px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); } 
         
         .logo-area {
             display: flex;
@@ -39,6 +39,7 @@
             font-weight: bold; 
             white-space: nowrap; 
             font-size: clamp(11px, 3.8vw, 15px); 
+            letter-spacing: 0.5px; /* Giãn chữ nhẹ tạo sự trang trọng */
         }
         
         .unit-info p { 
@@ -53,55 +54,62 @@
         .logo-right { width: 100%; max-width: 65px; object-fit: contain; transform: scale(0.9); }
 
         .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 20px; line-height: 1.3; }
-        .search-bar { background-color: white; color: #666; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; margin-bottom: 15px; }
+        
+        /* THANH TÌM KIẾM - CÓ VIỀN RÕ RÀNG */
+        .search-bar { background-color: white; color: #666; padding: 10px 15px; border-radius: 8px; border: 1px solid #cfd8dc; display: flex; align-items: center; margin-bottom: 10px; }
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 14px; width: 100%; }
         
-        .tab-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab-btn { background-color: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; padding: 10px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s; flex: 1 1 45%; max-width: 300px; text-align: center;}
-        .tab-btn.active { background-color: #1976d2; color: white; }
-        .tab-content { display: none; animation: fadeEffect 0.5s; }
+        /* NÚT TAB - CHUYỂN SANG DẠNG THẺ VUÔNG GỌN */
+        .tab-buttons { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { background-color: white; color: #1976d2; border: 1px solid #1976d2; padding: 10px 15px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.2s; flex: 1 1 45%; max-width: 300px; text-align: center;}
+        .tab-btn.active { background-color: #1976d2; color: white; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+        .tab-content { display: none; animation: fadeEffect 0.3s; }
         @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
 
-        /* GIAO DIỆN BẢNG TỔ */
-        .group-table-section { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 25px; }
-        .theme-group-header { color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        /* KHỐI TỔ NGHIỆP VỤ - BỎ BÓNG ĐỔ DÀY, THÊM VIỀN NÉT MIẾNG */
+        .group-table-section { background-color: white; border-radius: 8px; border: 1px solid #cfd8dc; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .theme-group-header { color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-bottom: 2px solid rgba(0,0,0,0.1); }
         .group-header-left { display: flex; align-items: center; flex: 1; min-width: 0; }
-        .theme-group-number { font-size: 28px; font-weight: bold; background-color: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .theme-group-number { font-size: 26px; font-weight: bold; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 8px; /* Đổi từ hình tròn sang hình vuông bo góc */ width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; }
         .theme-group-details { display: flex; flex-direction: column; overflow: hidden; }
         .theme-group-name { font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
         .theme-group-hs { font-size: 16px; font-weight: bold; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .theme-group-commodity { font-size: 12px; font-weight: 500; opacity: 0.9; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .theme-cbcc-count { background-color: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 10px; padding: 8px 12px; text-align: center; min-width: 45px; flex-shrink: 0; }
-        .theme-cbcc-count .number { font-size: 20px; font-weight: bold; display: block; line-height: 1; margin-bottom: 3px;}
-        .theme-cbcc-count .label { font-size: 10px; font-weight: bold; opacity: 0.9;}
+        .theme-group-commodity { font-size: 12px; font-weight: 500; opacity: 0.95; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
+        .theme-cbcc-count { background-color: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 6px; padding: 6px 10px; text-align: center; min-width: 45px; flex-shrink: 0; }
+        .theme-cbcc-count .number { font-size: 18px; font-weight: bold; display: block; line-height: 1; margin-bottom: 3px;}
+        .theme-cbcc-count .label { font-size: 10px; font-weight: bold; opacity: 0.95;}
+        
+        /* BẢNG BIỂU CHUYÊN NGHIỆP */
         .staff-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
-        .staff-table th { background-color: #f4f6f8; color: #444; padding: 12px 5px; border-bottom: 2px solid #cfd8dc; word-wrap: break-word; text-align: center; }
+        .staff-table th { background-color: #f4f6f8; color: #333; padding: 12px 5px; border-bottom: 1px solid #b0bec5; word-wrap: break-word; text-align: center; font-weight: bold; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;}
         .staff-table td { padding: 12px 5px; border-bottom: 1px solid #eeeeee; vertical-align: middle; word-wrap: break-word; }
         .staff-table tr:last-child td { border-bottom: none; }
         .staff-table tr.leader-row td { background-color: #fafafa; }
         .col-text-blue { color: #1976d2; font-weight: bold; }
         
-        /* KHUNG CHO SỐ BÀN */
+        /* KHUNG CHO SỐ BÀN - DẠNG TEM NHÃN HÀNH CHÍNH */
         .desk-box { 
             display: inline-block; 
-            border: 1.5px solid #90caf9; 
+            border: 1px solid #90caf9; 
             background-color: #f3f8ff; 
             color: #1976d2; 
-            padding: 4px 10px; 
-            border-radius: 8px; 
+            padding: 4px 8px; 
+            border-radius: 4px; /* Bo góc ít lại */
             font-weight: bold; 
             font-size: 13px; 
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        .badge { display: inline-block; padding: 4px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; text-align: center; word-break: break-word; line-height: 1.2;}
-        .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
-        .badge-tiep-nhan { background-color: #f5f5f5; color: #555; border: 1px solid #e0e0e0; }
-        .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        /* BADGE VAI TRÒ - CHUYỂN SANG DẠNG VUÔNG VỨC HƠN */
+        .badge { display: inline-block; padding: 4px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; text-align: center; word-break: break-word; line-height: 1.2;}
+        .badge-nhom-truong { background-color: #fffde7; color: #e65100; border: 1px solid #ffe082; }
+        .badge-tiep-nhan { background-color: #f5f5f5; color: #424242; border: 1px solid #e0e0e0; }
+        .badge-cntt { background-color: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
         
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
         
+        /* FOOTER LỊCH SỰ */
+        footer { background-color: white; border: 1px solid #cfd8dc; border-radius: 8px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; }
         .footer-logo { height: 40px; }
     </style>
 </head>
@@ -138,8 +146,8 @@
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
 
-    <!-- FOOTER ĐOÀN THANH NIÊN -->
-    <footer style="background-color: #e3f2fd; border: 2px solid #1976d2; border-radius: 15px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <!-- FOOTER ĐOÀN THANH NIÊN - CHỈNH LẠI MÀU NỀN CHO ĐỒNG BỘ THEME PHẲNG -->
+    <footer>
         <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
         <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
             Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
@@ -301,11 +309,11 @@
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
                         phoneHtml = `<div style="margin-top: 4px;">
-                            <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background-color: #e3f2fd; padding: 2px 6px; border-radius: 10px; display: inline-block;">📞 ${nv.dienThoai}</a>
+                            <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background-color: #e3f2fd; padding: 2px 6px; border-radius: 4px; border: 1px solid #90caf9; display: inline-block;">📞 ${nv.dienThoai}</a>
                         </div>`;
                     }
 
-                    // Điều kiện hiển thị mã bàn (Nếu không có mã bàn thì bỏ trống, nếu có thì lồng khung)
+                    // Khung số bàn vuông vức hơn
                     let maBanHtml = nv.maBan ? `<span class="desk-box">${nv.maBan}</span>` : '';
 
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
