@@ -225,8 +225,20 @@
     </footer>
 
     <script>
-        const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
-        
+        // Dùng đường dẫn trực tiếp đến file anh vừa tạo trên GitHub
+fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+        globalData = data; 
+        document.getElementById('loading').style.display = 'none';
+        renderData(data.nhapKhau, 'nhap-khau');
+        renderData(data.xuatKhau, 'xuat-khau');
+        document.getElementById('nhap-khau').style.display = 'block'; 
+    })
+    .catch(err => {
+        console.error("Lỗi tải dữ liệu:", err);
+        document.getElementById('loading').innerHTML = "❌ Không tìm thấy file data.json. Vui lòng kiểm tra lại!";
+    });
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
         let globalData = { nhapKhau: [], xuatKhau: [] };
 
@@ -427,27 +439,19 @@ html += `<tr class="${isLeader ? 'leader-row' : ''}">
             container.innerHTML = html;
         }
 
-        fetch(API_URL)
-            .then(res => res.json())
-            .then(data => {
-                globalData = data; 
-                document.getElementById('loading').style.display = 'none';
-                renderData(data.nhapKhau, 'nhap-khau');
-                renderData(data.xuatKhau, 'xuat-khau');
-                document.getElementById('nhap-khau').style.display = 'block'; 
-            })
-            .catch(err => {
-                document.getElementById('loading').innerHTML = "❌ Không thể tải dữ liệu. Vui lòng kiểm tra lại link kết nối.";
-            });
-        fetch(API_URL)
-    .then(res => {
-        if (!res.ok) throw new Error('Lỗi từ Google: ' + res.status);
-        return res.json();
+      // Thay đoạn fetch cũ bằng đoạn này
+fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+        globalData = data; 
+        document.getElementById('loading').style.display = 'none';
+        renderData(data.nhapKhau, 'nhap-khau');
+        renderData(data.xuatKhau, 'xuat-khau');
+        document.getElementById('nhap-khau').style.display = 'block'; 
     })
-    .then(data => { ... })
     .catch(err => {
-        console.error(err);
-        document.getElementById('loading').innerHTML = "❌ Đang quá tải, vui lòng thử lại sau!";
+        console.error("Lỗi:", err);
+        document.getElementById('loading').innerHTML = "❌ Không tìm thấy file data.json!";
     });
     </script>
 </body>
