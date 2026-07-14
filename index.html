@@ -3,61 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANH BẠ TỔ NGHIỆP VỤ ĐĂNG KÝ</title>
+    <title>DANH BẠ CÁC TỔ NGHIỆP VỤ</title>
     <style>
+        /* CSS CHUNG */
         body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
-        header { background-color: #1976d2; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-.logo-area {
-            display: grid;
-            grid-template-columns: 65px 1fr 65px; /* Ép cứng 2 cột 2 bên 65px, chữ nằm chính giữa tâm */
+        
+        /* HEADER BỐ CỤC LINH HOẠT - BẢO VỆ CHỮ 1 DÒNG */
+        header { background-color: #1976d2; color: white; padding: 20px 10px; border-radius: 12px; margin-bottom: 20px; text-align: center; } 
+        
+        .logo-area {
+            display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            width: 100%;
             margin-bottom: 15px;
-            width: 100%;
+            gap: 5px; /* Khoảng cách an toàn giữa logo và chữ */
         }
 
-        .logo {
-            width: 100%;
-            height: 65px;
-            object-fit: contain;
-        }
-
-        /* LỆNH CHỈNH CÂN BẰNG KÍCH THƯỚC BẰNG MẮT THƯỜNG */
-        .logo-left {
-            transform: scale(1.15); /* Logo HQ bên trái đang hơi nhỏ, phóng to lên 1.15 lần */
-        }
-
-        .logo-right {
-            transform: scale(0.95); /* Logo bên phải đang hơi to, thu nhỏ lại một chút xíu */
+        .logo-box {
+            flex: 0 0 55px; /* Ép cứng chiều rộng khu vực logo là 55px */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .unit-info {
+            flex: 1; /* Ép khu vực chữ chiếm TOÀN BỘ khoảng trống còn lại ở giữa */
             text-align: center;
-            word-wrap: break-word;
+            min-width: 0; 
         }
 
-        .unit-info h3 {
-            margin: 0;
-            font-size: 14px; /* Giảm chữ xuống 1 chút để không bị rớt nhiều dòng trên màn hình bé */
-            font-weight: bold;
-            line-height: 1.3;
+        /* LỆNH ÉP CHỮ NẰM TRÊN 1 HÀNG */
+        .unit-info h3 { 
+            margin: 0; 
+            font-weight: bold; 
+            white-space: nowrap; /* Tuyệt đối cấm rớt dòng */
+            font-size: clamp(11px, 3.8vw, 15px); /* Tự động co giãn cỡ chữ theo độ rộng màn hình */
+        }
+        
+        .unit-info p { 
+            margin: 4px 0 0 0; 
+            font-weight: bold; 
+            opacity: 0.9; 
+            white-space: nowrap; /* Tuyệt đối cấm rớt dòng */
+            font-size: clamp(9px, 3vw, 12px); /* Tự động co giãn cỡ chữ theo độ rộng màn hình */
         }
 
-        .unit-info p {
-            margin: 4px 0 0 0;
-            font-size: 11px;
-            font-weight: bold;
-            opacity: 0.9;
-        }
+        /* Căn chỉnh 2 logo bằng nhau */
+        .logo-left { width: 100%; max-width: 65px; object-fit: contain; transform: scale(1.15); }
+        .logo-right { width: 100%; max-width: 65px; object-fit: contain; transform: scale(0.9); }
+
         .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 20px; line-height: 1.3; }
         .search-bar { background-color: white; color: #666; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; margin-bottom: 15px; }
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 14px; width: 100%; }
+        
         .tab-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { background-color: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; padding: 10px 15px; border-radius: 20px; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s; flex: 1 1 45%; max-width: 300px; text-align: center;}
         .tab-btn.active { background-color: #1976d2; color: white; }
         .tab-content { display: none; animation: fadeEffect 0.5s; }
         @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
+
+        /* GIAO DIỆN BẢNG TỔ */
         .group-table-section { background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 25px; }
         .theme-group-header { color: white; padding: 15px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
         .group-header-left { display: flex; align-items: center; flex: 1; min-width: 0; }
@@ -69,6 +76,7 @@
         .theme-cbcc-count { background-color: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 10px; padding: 8px 12px; text-align: center; min-width: 45px; flex-shrink: 0; }
         .theme-cbcc-count .number { font-size: 20px; font-weight: bold; display: block; line-height: 1; margin-bottom: 3px;}
         .theme-cbcc-count .label { font-size: 10px; font-weight: bold; opacity: 0.9;}
+        
         .staff-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
         .staff-table th { background-color: #f4f6f8; color: #444; padding: 12px 5px; border-bottom: 2px solid #cfd8dc; word-wrap: break-word; text-align: center; }
         .staff-table td { padding: 12px 5px; border-bottom: 1px solid #eeeeee; vertical-align: middle; word-wrap: break-word; }
@@ -76,54 +84,66 @@
         .staff-table tr.leader-row td { background-color: #fafafa; }
         .col-text-blue { color: #1976d2; font-weight: bold; }
         .col-text-gray { color: #666; font-size: 12px; }
+        
         .badge { display: inline-block; padding: 4px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; text-align: center; word-break: break-word; line-height: 1.2;}
         .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
         .badge-tiep-nhan { background-color: #f5f5f5; color: #555; border: 1px solid #e0e0e0; }
         .badge-cntt { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
-        footer { padding: 20px; text-align: center; border-top: 1px solid #ddd; margin-top: 30px; color: #666; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
         .footer-logo { height: 40px; }
     </style>
 </head>
 <body>
     <div class="main-container">
+        <!-- HEADER MỚI -->
         <header>
-     <div class="logo-area">
-                <img src="logo-hq.png" alt="Logo HQ" class="logo logo-left">
+            <div class="logo-area">
+                <div class="logo-box">
+                    <img src="logo-hq.png" alt="Logo HQ" class="logo-left">
+                </div>
                 <div class="unit-info">
                     <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
                     <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
                 </div>
-                <img src="logo-hqkv2.png" alt="Logo HQKV2" class="logo logo-right">
+                <div class="logo-box">
+                    <img src="logo-hqkv2.png" alt="Logo HQKV2" class="logo-right">
+                </div>
             </div>
             <div class="title-area">
                 <h1>DANH BẠ CÁC TỔ NGHIỆP VỤ</h1>
             </div>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà,Ha,02)...">
+                <input type="text" id="search-input" placeholder="Nhập Tên, SĐT hoặc Chương HS (VD: Hà, 02)...">
             </div>
         </header>
+
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Bộ phận thủ tục hàng hóa nhập khẩu</button>
             <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Bộ phận thủ tục hàng hóa xuất khẩu</button>
         </div>
+
         <div id="loading">⏳ Đang tải dữ liệu danh bạ...</div>
         <div id="nhap-khau" class="tab-content" style="display: none;"></div>
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
-   <!-- FOOTER CỐ ĐỊNH VỚI KHUNG XANH BAO QUANH -->
+
+    <!-- FOOTER ĐOÀN THANH NIÊN (NẰM NGOÀI MAIN CONTAINER ĐỂ LUÔN HIỂN THỊ DƯỚI CÙNG) -->
     <footer style="background-color: #e3f2fd; border: 2px solid #1976d2; border-radius: 15px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
-        <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left;">
+        <img src="logo-doan.png" alt="Logo Đoàn" class="footer-logo">
+        <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
             Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
         </p>
     </footer>
-    
+
     <script>
+        // LƯU Ý: VUI LÒNG DÁN ĐƯỜNG LINK CỦA ANH VÀO ĐÂY TRƯỚC KHI LƯU
         const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
+        
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
         let globalData = { nhapKhau: [], xuatKhau: [] };
-        
+
         function openTab(evt, tabId) {
             var tabcontent = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
@@ -132,11 +152,12 @@
             document.getElementById(tabId).style.display = "block";
             evt.currentTarget.className += " active";
         }
-        
+
         function removeAccents(str) {
             return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
         }
-        
+
+        // TÌM KIẾM THÔNG MINH
         document.getElementById('search-input').addEventListener('input', function(e) {
             let keyword = e.target.value.trim();
             let kwClean = removeAccents(keyword.toLowerCase()).replace(/\s+/g, ' ');
@@ -146,55 +167,66 @@
                 renderData(globalData.xuatKhau, 'xuat-khau');
                 return;
             }
-            
+
             function filterGroup(dataArray) {
                 let result = [];
                 dataArray.forEach(group => {
                     let isGroupMatch = false;
+                    
                     let chuongStr = removeAccents((group.chuongHs || "").toLowerCase());
                     let nameStr = removeAccents((group.tenTo || "").toLowerCase());
-                    let isOnlyDigits = /^\d+$/.test(kwClean);
                     
+                    let isOnlyDigits = /^\d+$/.test(kwClean);
+
                     if (!isOnlyDigits && (nameStr.includes(kwClean) || chuongStr.includes(kwClean))) {
                         isGroupMatch = true;
                     }
-                    
+
+                    // TÌM THEO SỐ CHƯƠNG
                     let numMatch = kwClean.match(/\d+/);
                     if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || isOnlyDigits)) {
                         let queryNum = parseInt(numMatch[0], 10);
+                        
                         let rangeRegex = /(\d+)\s*(?:-|den|_|->|:)\s*(\d+)/g;
                         let match;
                         while ((match = rangeRegex.exec(chuongStr)) !== null) {
                             let min = parseInt(match[1], 10);
                             let max = parseInt(match[2], 10);
-                            if (queryNum >= min && queryNum <= max) { isGroupMatch = true; break; }
+                            if (queryNum >= min && queryNum <= max) {
+                                isGroupMatch = true;
+                                break;
+                            }
                         }
+
                         if (!isGroupMatch) {
                             let textWithoutRanges = chuongStr.replace(/(\d+)\s*(?:-|den|_|->|:)\s*(\d+)/g, '');
                             let singleNums = textWithoutRanges.match(/\d+/g) || [];
-                            if (singleNums.some(n => parseInt(n, 10) === queryNum)) { isGroupMatch = true; }
+                            if (singleNums.some(n => parseInt(n, 10) === queryNum)) {
+                                isGroupMatch = true;
+                            }
                         }
                     }
-                    
+
                     if (isGroupMatch) {
                         result.push(group);
                     } else {
+                        // TÌM CÁN BỘ
                         let matchedStaff = group.nhanVien.filter(nv => {
-                            // Xử lý tên
                             let staffName = removeAccents((nv.hoTen || "").toLowerCase());
-                            let nameMatch = staffName.includes(kwClean); // Khớp bất kỳ chữ nào trong tên
+                            let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
                             
-                            // Xử lý SĐT (Xóa tất cả các ký tự không phải là số ở cả DB và từ khóa)
-                            let cleanStaffPhone = (nv.dienThoai || "").replace(/\D/g, ''); 
+                            let nameMatch = (" " + staffName).includes(" " + kwClean);
+                            
                             let phoneMatch = false;
-                            
-                            if (isOnlyDigits) { 
-                                if (kwClean.length >= 3) phoneMatch = cleanStaffPhone.includes(kwClean); 
+                            if (isOnlyDigits) {
+                                if (kwClean.length >= 3) phoneMatch = staffPhone.includes(kwClean);
+                            } else {
+                                phoneMatch = staffPhone.includes(kwClean);
                             }
                             
                             return nameMatch || phoneMatch;
                         });
-                        
+
                         if (matchedStaff.length > 0) {
                             let newGroup = Object.assign({}, group);
                             newGroup.nhanVien = matchedStaff;
@@ -204,25 +236,29 @@
                 });
                 return result;
             }
-            
+
             renderData(filterGroup(globalData.nhapKhau), 'nhap-khau');
             renderData(filterGroup(globalData.xuatKhau), 'xuat-khau');
         });
-        
+
+        // HIỂN THỊ DỮ LIỆU
         function renderData(dataArray, containerId) {
             let container = document.getElementById(containerId);
             let html = "";
+            
             if(dataArray.length === 0) {
                 container.innerHTML = `<div style="text-align: center; padding: 40px; color: #666;">
                     <span style="font-size: 30px;">🔍</span><br><br>Không tìm thấy kết quả nào phù hợp.
                 </div>`;
                 return;
             }
+
             dataArray.forEach((group, index) => {
                 let tongCBCC = group.nhanVien.length;
                 let bgColor = THEME_COLORS[index % THEME_COLORS.length];
                 let match = group.tenTo.match(/\d+/);
                 let soTo = match ? match[0].padStart(2, '0') : "00";
+
                 html += `<div class="group-table-section">
                     <div class="theme-group-header" style="background-color: ${bgColor};">
                         <div class="group-header-left">
@@ -238,6 +274,7 @@
                             <span class="label">CBCC</span>
                         </div>
                     </div>
+                    
                     <div class="staff-table-container">
                         <table class="staff-table">
                             <thead>
@@ -249,12 +286,13 @@
                                 </tr>
                             </thead>
                             <tbody>`;
+                
                 group.nhanVien.forEach(nv => {
                     let badgeClass = 'badge-tiep-nhan';
                     let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
                     if (isLeader) badgeClass = 'badge-nhom-truong';
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
-                    
+
                     let phoneHtml = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
@@ -262,6 +300,7 @@
                             <a href="tel:${phoneClean}" style="color: #0068ff; text-decoration: none; font-size: 12px; font-weight: bold; background-color: #e3f2fd; padding: 2px 6px; border-radius: 10px; display: inline-block;">📞 ${nv.dienThoai}</a>
                         </div>`;
                     }
+
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
                         <td class="col-text-blue" style="text-align: center;">${nv.stt}</td>
                         <td style="text-align: left;">
@@ -276,7 +315,8 @@
             });
             container.innerHTML = html;
         }
-        
+
+        // TẢI DỮ LIỆU TỪ GOOGLE SHEETS
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
