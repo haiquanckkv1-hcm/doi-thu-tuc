@@ -439,6 +439,16 @@ html += `<tr class="${isLeader ? 'leader-row' : ''}">
             .catch(err => {
                 document.getElementById('loading').innerHTML = "❌ Không thể tải dữ liệu. Vui lòng kiểm tra lại link kết nối.";
             });
+        fetch(API_URL)
+    .then(res => {
+        if (!res.ok) throw new Error('Lỗi từ Google: ' + res.status);
+        return res.json();
+    })
+    .then(data => { ... })
+    .catch(err => {
+        console.error(err);
+        document.getElementById('loading').innerHTML = "❌ Đang quá tải, vui lòng thử lại sau!";
+    });
     </script>
 </body>
 </html>
