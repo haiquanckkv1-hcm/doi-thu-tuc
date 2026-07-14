@@ -18,39 +18,37 @@
             justify-content: space-between;
             width: 100%;
             margin-bottom: 15px;
-            gap: 5px; /* Khoảng cách an toàn giữa logo và chữ */
+            gap: 5px;
         }
 
         .logo-box {
-            flex: 0 0 55px; /* Ép cứng chiều rộng khu vực logo là 55px */
+            flex: 0 0 55px; 
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .unit-info {
-            flex: 1; /* Ép khu vực chữ chiếm TOÀN BỘ khoảng trống còn lại ở giữa */
+            flex: 1; 
             text-align: center;
             min-width: 0; 
         }
 
-        /* LỆNH ÉP CHỮ NẰM TRÊN 1 HÀNG */
         .unit-info h3 { 
             margin: 0; 
             font-weight: bold; 
-            white-space: nowrap; /* Tuyệt đối cấm rớt dòng */
-            font-size: clamp(11px, 3.8vw, 15px); /* Tự động co giãn cỡ chữ theo độ rộng màn hình */
+            white-space: nowrap; 
+            font-size: clamp(11px, 3.8vw, 15px); 
         }
         
         .unit-info p { 
             margin: 4px 0 0 0; 
             font-weight: bold; 
             opacity: 0.9; 
-            white-space: nowrap; /* Tuyệt đối cấm rớt dòng */
-            font-size: clamp(9px, 3vw, 12px); /* Tự động co giãn cỡ chữ theo độ rộng màn hình */
+            white-space: nowrap; 
+            font-size: clamp(9px, 3vw, 12px); 
         }
 
-        /* Căn chỉnh 2 logo bằng nhau */
         .logo-left { width: 100%; max-width: 65px; object-fit: contain; transform: scale(1.15); }
         .logo-right { width: 100%; max-width: 65px; object-fit: contain; transform: scale(0.9); }
 
@@ -83,8 +81,20 @@
         .staff-table tr:last-child td { border-bottom: none; }
         .staff-table tr.leader-row td { background-color: #fafafa; }
         .col-text-blue { color: #1976d2; font-weight: bold; }
-        .col-text-gray { color: #666; font-size: 12px; }
         
+        /* KHUNG CHO SỐ BÀN */
+        .desk-box { 
+            display: inline-block; 
+            border: 1.5px solid #90caf9; 
+            background-color: #f3f8ff; 
+            color: #1976d2; 
+            padding: 4px 10px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 13px; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
         .badge { display: inline-block; padding: 4px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; text-align: center; word-break: break-word; line-height: 1.2;}
         .badge-nhom-truong { background-color: #fff9c4; color: #f57f17; border: 1px solid #fdd835; }
         .badge-tiep-nhan { background-color: #f5f5f5; color: #555; border: 1px solid #e0e0e0; }
@@ -97,7 +107,6 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- HEADER MỚI -->
         <header>
             <div class="logo-area">
                 <div class="logo-box">
@@ -129,16 +138,15 @@
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
 
-    <!-- FOOTER ĐOÀN THANH NIÊN (NẰM NGOÀI MAIN CONTAINER ĐỂ LUÔN HIỂN THỊ DƯỚI CÙNG) -->
+    <!-- FOOTER ĐOÀN THANH NIÊN -->
     <footer style="background-color: #e3f2fd; border: 2px solid #1976d2; border-radius: 15px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
+        <img src="logo-doan.png" alt="Logo Đoàn" class="footer-logo">
         <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
             Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
         </p>
     </footer>
 
     <script>
-        // LƯU Ý: VUI LÒNG DÁN ĐƯỜNG LINK CỦA ANH VÀO ĐÂY TRƯỚC KHI LƯU
         const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
         
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
@@ -157,7 +165,6 @@
             return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
         }
 
-        // TÌM KIẾM THÔNG MINH
         document.getElementById('search-input').addEventListener('input', function(e) {
             let keyword = e.target.value.trim();
             let kwClean = removeAccents(keyword.toLowerCase()).replace(/\s+/g, ' ');
@@ -182,7 +189,6 @@
                         isGroupMatch = true;
                     }
 
-                    // TÌM THEO SỐ CHƯƠNG
                     let numMatch = kwClean.match(/\d+/);
                     if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || isOnlyDigits)) {
                         let queryNum = parseInt(numMatch[0], 10);
@@ -210,7 +216,6 @@
                     if (isGroupMatch) {
                         result.push(group);
                     } else {
-                        // TÌM CÁN BỘ
                         let matchedStaff = group.nhanVien.filter(nv => {
                             let staffName = removeAccents((nv.hoTen || "").toLowerCase());
                             let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
@@ -241,7 +246,6 @@
             renderData(filterGroup(globalData.xuatKhau), 'xuat-khau');
         });
 
-        // HIỂN THỊ DỮ LIỆU
         function renderData(dataArray, containerId) {
             let container = document.getElementById(containerId);
             let html = "";
@@ -301,13 +305,16 @@
                         </div>`;
                     }
 
+                    // Điều kiện hiển thị mã bàn (Nếu không có mã bàn thì bỏ trống, nếu có thì lồng khung)
+                    let maBanHtml = nv.maBan ? `<span class="desk-box">${nv.maBan}</span>` : '';
+
                     html += `<tr class="${isLeader ? 'leader-row' : ''}">
                         <td class="col-text-blue" style="text-align: center;">${nv.stt}</td>
                         <td style="text-align: left;">
                             <div class="col-text-blue" style="font-size: 14px;">${nv.hoTen}</div>
                             ${phoneHtml}
                         </td>
-                        <td class="col-text-gray" style="text-align: center;">${nv.maBan}</td>
+                        <td style="text-align: center;">${maBanHtml}</td>
                         <td style="text-align: center;"><span class="badge ${badgeClass}">${nv.vaiTro}</span></td>
                     </tr>`;
                 });
@@ -316,7 +323,6 @@
             container.innerHTML = html;
         }
 
-        // TẢI DỮ LIỆU TỪ GOOGLE SHEETS
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
