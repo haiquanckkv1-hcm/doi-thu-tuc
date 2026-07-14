@@ -18,7 +18,7 @@
             min-height: 100vh; 
         }
         /* Chiều rộng tối đa của toàn bộ trang web (Gồm cả Header, Bảng, và Footer) */
-        .main-container { width: 100%; max-width: 1000px; margin: auto; box-sizing: border-box; flex: 1; display: flex; flex-direction: column; }
+        .main-container { width: 100%; max-width: 800px; margin: auto; box-sizing: border-box; flex: 1; display: flex; flex-direction: column; }
         
         /* HEADER - HIỆU ỨNG KÍNH MỜ */
         header { 
@@ -125,7 +125,7 @@
         
         /* BẢNG BIỂU NỀN TRONG SUỐT */
         .staff-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
-        .staff-table th { background-color: rgba(255, 255, 255, 0.4); color: #333; padding: 12px 5px; border-bottom: 2px solid rgba(255, 255, 255, 0.7); word-wrap: break-word; text-align: center; font-weight: bold; text-transform: uppercase; font-size: 11px;}
+        .staff-table th { color: #333; padding: 12px 5px; border-bottom: 2px solid rgba(255, 255, 255, 0.7); word-wrap: break-word; text-align: center; font-weight: bold; text-transform: uppercase; font-size: 11px;}
         .staff-table td { padding: 12px 5px; border-bottom: 1px solid rgba(255, 255, 255, 0.5); vertical-align: middle; word-wrap: break-word; }
         .staff-table tr:last-child td { border-bottom: none; }
         .staff-table tr.leader-row td { background-color: rgba(255, 255, 255, 0.6); }
@@ -150,7 +150,7 @@
         
         #loading { text-align: center; font-size: 16px; color: #1976d2; padding: 30px; font-weight: bold; }
         
-        /* FOOTER ĐOÀN THANH NIÊN - Đã chỉnh margin để thẳng hàng với bảng */
+        /* FOOTER ĐOÀN THANH NIÊN */
         footer { 
             background: rgba(255, 255, 255, 0.65); 
             backdrop-filter: blur(12px);
@@ -199,7 +199,6 @@
     </style>
 </head>
 <body>
-    <!-- Bao bọc tất cả (kể cả Header và Footer) vào trong main-container -->
     <div class="main-container">
         
         <header>
@@ -263,7 +262,7 @@
             </div>
         </footer>
 
-    </div> <!-- KẾT THÚC MAIN-CONTAINER Ở ĐÂY -->
+    </div> 
 
     <script>
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
@@ -413,7 +412,8 @@
                     
                     <div class="staff-table-container">
                         <table class="staff-table">
-                            <thead>
+                            <!-- BẢNG MÀU THEAD ĐƯỢC CẬP NHẬT TẠI ĐÂY -->
+                            <thead style="background-color: ${bgColor}15;">
                                 <tr>
                                     <th class="col-stt">STT</th>
                                     <th class="col-name" style="text-align: left;">HỌ VÀ TÊN</th>
