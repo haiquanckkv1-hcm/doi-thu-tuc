@@ -8,24 +8,33 @@
         body { font-family: Arial, sans-serif; background-color: #f0f4f9; margin: 0; padding: 10px; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         .main-container { width: 100%; max-width: 1200px; margin: auto; box-sizing: border-box; flex: 1; }
         header { background-color: #1976d2; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-        .logo-area { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-        .logo { height: 90px; }
-    .unit-info h3 { 
-    margin: 0; 
-    font-size: 18px; /* Tăng cỡ chữ */
-    font-weight: bold; 
-    text-align: center; 
-    line-height: 1.4;
-}
-
-.unit-info p { 
-    margin: 5px 0 0 0; /* Thêm khoảng cách phía trên */
-    font-size: 15px; /* Tăng cỡ chữ */
-    font-weight: bold; 
-    opacity: 1; /* Để chữ rõ hơn */
-    text-align: center; 
-}
-.unit-info p { margin: 0; font-size: 12px; font-weight: bold; opacity: 0.9; text-align: center; }
+        .logo { 
+            height: 90px;         /* Đặt chiều cao cố định */
+            width: 90px;          /* Đặt chiều rộng bằng chiều cao để tạo hình vuông đồng nhất */
+            object-fit: contain;  /* Giúp ảnh hiển thị trọn vẹn không bị méo */
+        }
+        .logo-area { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            gap: 15px;               /* Khoảng cách giữa các logo và phần chữ */
+            margin-bottom: 10px; 
+            flex-wrap: wrap;         /* Tự xuống dòng nếu màn hình quá nhỏ */
+        }
+        .unit-info h3 { 
+            margin: 0; 
+            font-size: 18px; /* Tăng cỡ chữ */
+            font-weight: bold; 
+            text-align: center; 
+            line-height: 1.4;
+        }
+        .unit-info p { 
+            margin: 5px 0 0 0; /* Thêm khoảng cách phía trên */
+            font-size: 15px; /* Tăng cỡ chữ */
+            font-weight: bold; 
+            opacity: 1; /* Để chữ rõ hơn */
+            text-align: center; 
+        }
         .title-area h1 { color: #fbc02d; margin: 0 0 10px 0; font-size: 20px; line-height: 1.3; }
         .search-bar { background-color: white; color: #666; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; margin-bottom: 15px; }
         .search-bar input { border: none; outline: none; flex-grow: 1; font-size: 14px; width: 100%; }
@@ -65,11 +74,12 @@
     <div class="main-container">
         <header>
             <div class="logo-area">
-                <img src="logo-hq.png" alt="Logo" class="logo">
+                <img src="logo-hq.png" alt="Logo HQ" class="logo">
                 <div class="unit-info">
                     <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
                     <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
                 </div>
+                <img src="logo-hqkv2.png" alt="Logo HQKV2" class="logo">
             </div>
             <div class="title-area">
                 <h1>DANH SÁCH CÁC TỔ NGHIỆP VỤ</h1>
@@ -87,16 +97,18 @@
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
    <!-- FOOTER CỐ ĐỊNH VỚI KHUNG XANH BAO QUANH -->
-<footer style="background-color: #e3f2fd; border: 2px solid #1976d2; border-radius: 15px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
-    <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left;">
-        Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
-    </p>
-</footer>
+    <footer style="background-color: #e3f2fd; border: 2px solid #1976d2; border-radius: 15px; padding: 15px; margin: 30px 10px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
+        <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left;">
+            Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
+        </p>
+    </footer>
+    
     <script>
         const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSWf0MlqFIvsLkr_q8eI9IS4um-QSVYZd-SiE96V4c7falU4Gk9ilRHuCorxbTysgjH0Tv0MgnC1wE7qdRBn2Dqds6I6CU_zCRYRk5rHbbBk_iCZPlYYFgfCTN2Qv1RnrCxJ5O8zsFdj8RFpimXrmZkvowFfQqqBNEvySsAhFNWdZCKDgFqR4LdSL7xe2DAuQU7cZNoJcm3ksEFXpkOz_kaHf1vnZJmFIqbi1LGHlwHJF5PfLDQAZnm3Mnrpb9V-JzYdy1SiTnPf-0NaCYc26OGz6WIFg&lib=MNL8Dlbm__mtNM1O5grhLRHkc-yKkVEtm";
         const THEME_COLORS = ['#1976d2', '#2e7d32', '#ef6c00', '#6a1b9a', '#00838f'];
         let globalData = { nhapKhau: [], xuatKhau: [] };
+        
         function openTab(evt, tabId) {
             var tabcontent = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
@@ -105,17 +117,21 @@
             document.getElementById(tabId).style.display = "block";
             evt.currentTarget.className += " active";
         }
+        
         function removeAccents(str) {
             return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
         }
+        
         document.getElementById('search-input').addEventListener('input', function(e) {
             let keyword = e.target.value.trim();
             let kwClean = removeAccents(keyword.toLowerCase()).replace(/\s+/g, ' ');
+            
             if (!kwClean) {
                 renderData(globalData.nhapKhau, 'nhap-khau');
                 renderData(globalData.xuatKhau, 'xuat-khau');
                 return;
             }
+            
             function filterGroup(dataArray) {
                 let result = [];
                 dataArray.forEach(group => {
@@ -123,9 +139,11 @@
                     let chuongStr = removeAccents((group.chuongHs || "").toLowerCase());
                     let nameStr = removeAccents((group.tenTo || "").toLowerCase());
                     let isOnlyDigits = /^\d+$/.test(kwClean);
+                    
                     if (!isOnlyDigits && (nameStr.includes(kwClean) || chuongStr.includes(kwClean))) {
                         isGroupMatch = true;
                     }
+                    
                     let numMatch = kwClean.match(/\d+/);
                     if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || isOnlyDigits)) {
                         let queryNum = parseInt(numMatch[0], 10);
@@ -142,18 +160,26 @@
                             if (singleNums.some(n => parseInt(n, 10) === queryNum)) { isGroupMatch = true; }
                         }
                     }
+                    
                     if (isGroupMatch) {
                         result.push(group);
                     } else {
                         let matchedStaff = group.nhanVien.filter(nv => {
+                            // Xử lý tên
                             let staffName = removeAccents((nv.hoTen || "").toLowerCase());
-                            let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
-                            let nameMatch = (" " + staffName).includes(" " + kwClean);
+                            let nameMatch = staffName.includes(kwClean); // Khớp bất kỳ chữ nào trong tên
+                            
+                            // Xử lý SĐT (Xóa tất cả các ký tự không phải là số ở cả DB và từ khóa)
+                            let cleanStaffPhone = (nv.dienThoai || "").replace(/\D/g, ''); 
                             let phoneMatch = false;
-                            if (isOnlyDigits) { if (kwClean.length >= 3) phoneMatch = staffPhone.includes(kwClean); }
-                            else { phoneMatch = staffPhone.includes(kwClean); }
+                            
+                            if (isOnlyDigits) { 
+                                if (kwClean.length >= 3) phoneMatch = cleanStaffPhone.includes(kwClean); 
+                            }
+                            
                             return nameMatch || phoneMatch;
                         });
+                        
                         if (matchedStaff.length > 0) {
                             let newGroup = Object.assign({}, group);
                             newGroup.nhanVien = matchedStaff;
@@ -163,9 +189,11 @@
                 });
                 return result;
             }
+            
             renderData(filterGroup(globalData.nhapKhau), 'nhap-khau');
             renderData(filterGroup(globalData.xuatKhau), 'xuat-khau');
         });
+        
         function renderData(dataArray, containerId) {
             let container = document.getElementById(containerId);
             let html = "";
@@ -211,6 +239,7 @@
                     let isLeader = nv.vaiTro.toLowerCase().includes('trưởng');
                     if (isLeader) badgeClass = 'badge-nhom-truong';
                     else if (nv.vaiTro.toLowerCase().includes('cntt')) badgeClass = 'badge-cntt';
+                    
                     let phoneHtml = "";
                     if (nv.dienThoai) {
                         let phoneClean = nv.dienThoai.replace(/[^\d]/g, '');
@@ -232,6 +261,7 @@
             });
             container.innerHTML = html;
         }
+        
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
