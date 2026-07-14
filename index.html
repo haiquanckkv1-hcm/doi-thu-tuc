@@ -159,8 +159,7 @@
             padding: 15px; 
             margin: 30px 10px; 
             display: flex; 
-            align-items: center; 
-            justify-content: center; 
+            flex-direction: column;
             gap: 15px; 
             box-shadow: 0 8px 32px rgba(0,0,0,0.08); 
         }
@@ -177,13 +176,6 @@
                 <div class="unit-info">
                     <h3>CHI CỤC HẢI QUAN KHU VỰC II</h3>
                     <p>HẢI QUAN CỬA KHẨU CẢNG SÀI GÒN KV1</p>
-                    
-                    <!-- DÒNG ĐỊA CHỈ TÍCH HỢP BẢN ĐỒ CÁT LÁI -->
-                    <div style="margin-top: 8px;">
-                        <a href="https://maps.app.goo.gl/9mAUxfHJNd419zzo6" target="_blank" rel="noopener" style="color: #ffe082; text-decoration: none; font-size: clamp(9px, 2.8vw, 12px); display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; white-space: normal; line-height: 1.3;">
-                            📍 Cổng B khu cảng Cát Lái, số 02 đường Lê Phụng Hiểu, phường Cát Lái, Quận 2, TP.HCM
-                        </a>
-                    </div>
                 </div>
                 <div class="logo-box">
                     <img src="logo-hqkv2.png" alt="Logo HQKV2" class="logo-right">
@@ -210,23 +202,31 @@
         <div id="xuat-khau" class="tab-content" style="display: none;"></div>
     </div>
 
-    <!-- FOOTER ĐOÀN THANH NIÊN - BỘ ĐẾM CĂN PHẢI -->
-    <footer style="background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 16px; padding: 15px; margin: 30px 10px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
-        
-        <!-- Dòng chứa bộ đếm: Căn sang phải -->
-        <div style="display: flex; justify-content: flex-end; align-items: center; gap: 8px;">
-            <p style="margin: 0; font-size: 10px; color: #1976d2; font-weight: bold; text-transform: uppercase;">Lượt truy cập:</p>
-            <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="hitwebcounter.com/">
-                <img src="https://www.hitwebcounter.com/counter/counter.php?page=21508735&amp;style=0024&amp;nbdigits=5&amp;type=page" alt="hitwebcounter.com/" decoding="async" style="border:0;height:22px;" />
-            </a>
+    <!-- FOOTER -->
+    <footer>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <!-- Dòng chứa thông tin Đoàn: Căn trái -->
+            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px;">
+                <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
+                <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
+                    Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
+                </p>
+            </div>
+            
+            <!-- Dòng chứa bộ đếm: Căn phải -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <p style="margin: 0; font-size: 10px; color: #1976d2; font-weight: bold; text-transform: uppercase;">Lượt truy cập:</p>
+                <a href="https://www.hitwebcounter.com/" target="_blank" rel="noopener" title="hitwebcounter.com/">
+                    <img src="https://www.hitwebcounter.com/counter/counter.php?page=21508735&amp;style=0024&amp;nbdigits=5&amp;type=page" alt="hitwebcounter.com/" decoding="async" style="border:0;height:22px;" />
+                </a>
+            </div>
         </div>
 
-        <!-- Dòng chứa thông tin Đoàn: Căn trái -->
-        <div style="display: flex; align-items: center; justify-content: flex-start; gap: 15px; border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 10px;">
-            <img src="Logo-doan.png" alt="Logo Đoàn" class="footer-logo">
-            <p style="margin: 0; font-weight: bold; color: #1976d2; text-align: left; font-size: 13px;">
-                Một sản phẩm của Đoàn thanh niên<br>Chi cục Hải quan khu vực II
-            </p>
+        <!-- ĐỊA CHỈ NẰM DƯỚI CÙNG FOOTER -->
+        <div style="border-top: 1px solid rgba(25, 118, 210, 0.1); padding-top: 12px; text-align: center; width: 100%;">
+            <a href="https://maps.app.goo.gl/9mAUxfHJNd419zzo6" target="_blank" rel="noopener" style="color: #1976d2; text-decoration: none; font-size: clamp(10px, 3vw, 13px); display: inline-flex; align-items: center; gap: 4px; font-weight: bold; padding: 6px 12px; background: rgba(255,255,255,0.7); border-radius: 12px; border: 1px solid rgba(25, 118, 210, 0.2); transition: all 0.2s; white-space: normal; line-height: 1.3;">
+                📍 Cổng B khu cảng Cát Lái, số 02 đường Lê Phụng Hiểu, phường Cát Lái, Quận 2, TP.HCM
+            </a>
         </div>
     </footer>
 
@@ -267,14 +267,24 @@
                     let descStr = removeAccents((group.moTa || "").toLowerCase());
                     let isOnlyDigits = /^\d+$/.test(kwClean);
 
-                    if (!isOnlyDigits && (nameStr.includes(kwClean) || chuongStr.includes(kwClean) || descStr.includes(kwClean))) {
-                        isGroupMatch = true;
+                    if (!isOnlyDigits) {
+                        let groupText = ` ${nameStr} ${chuongStr} ${descStr} `.replace(/[,\-]/g, ' ');
+                        if (kwClean.includes(" ")) {
+                            // Cụm từ dài thì tìm chứa bên trong bình thường
+                            isGroupMatch = groupText.includes(kwClean);
+                        } else {
+                            // Fix Lỗi Tìm Tên Thành Mô Tả: Dùng \b để bắt buộc tìm theo từ trọn vẹn (Vd: "thu" không khớp với "thuc")
+                            let regex = new RegExp(`\\b${kwClean}\\b`);
+                            if (regex.test(groupText) || kwClean === "chuong" || kwClean === "to") {
+                                isGroupMatch = true;
+                            }
+                        }
                     }
 
+                    // Vẫn giữ lại phần logic tìm số chương
                     let numMatch = kwClean.match(/\d+/);
                     if (!isGroupMatch && numMatch && (kwClean.includes("chuong") || isOnlyDigits)) {
                         let queryNum = parseInt(numMatch[0], 10);
-                        
                         let rangeRegex = /(\d+)\s*(?:-|den|_|->|:)\s*(\d+)/g;
                         let match;
                         while ((match = rangeRegex.exec(chuongStr)) !== null) {
@@ -303,12 +313,13 @@
                             let staffPhone = removeAccents((nv.dienThoai || "").toLowerCase());
                             
                             let nameParts = staffNameFull.split(/\s+/);
-                            let tenChinh = nameParts[nameParts.length - 1]; 
+                            let tenChinh = nameParts[nameParts.length - 1]; // Chỉ lấy Tên cuối cùng
                             
                             let nameMatch = false;
                             if (kwClean.includes(" ")) {
                                 nameMatch = staffNameFull.includes(kwClean);
                             } else {
+                                // Fix Lỗi Tìm Tên: Chỉ đối chiếu bằng Tên chính (Chữ cuối), bỏ qua tên đệm
                                 nameMatch = tenChinh.startsWith(kwClean);
                             }
                             
@@ -388,7 +399,6 @@
                     
                     if (isLeader) {
                         badgeClass = 'badge-nhom-truong';
-                        // Đảm bảo Ngôi sao và Vai trò luôn dính liền trên 1 dòng
                         displayRole = `<span style="white-space: nowrap; display: inline-block;">⭐ ${nv.vaiTro}</span>`;
                     } else if (nv.vaiTro.toLowerCase().includes('cntt')) {
                         badgeClass = 'badge-cntt';
@@ -419,7 +429,7 @@
             container.innerHTML = html;
         }
 
-        // Lấy dữ liệu tĩnh cục bộ thay vì App Script độc lập
+        // Đọc dữ liệu từ file JSON tại thư mục gốc
         fetch('data.json')
             .then(res => res.json())
             .then(data => {
@@ -430,7 +440,7 @@
                 document.getElementById('nhap-khau').style.display = 'block'; 
             })
             .catch(err => {
-                document.getElementById('loading').innerHTML = "❌ Không tìm thấy dữ liệu. Vui lòng kiểm tra lại file data.json trên kho GitHub.";
+                document.getElementById('loading').innerHTML = "❌ Không tìm thấy dữ liệu. Vui lòng kiểm tra lại file data.json.";
             });
     </script>
 </body>
