@@ -436,5 +436,126 @@
         }
       ]
     }
+  ],
+  "hoTro": [
+    {
+      "tenTo": "Tổ Chuyên Môn Nghiệp Vụ",
+      "chuongHs": "Bộ phận TTHHXNK",
+      "moTa": "Hỗ trợ giải đáp vướng mắc cho doanh nghiệp",
+      "nhanVien": [
+        {
+          "stt": 1,
+          "hoTen": "Tống Lê Dân",
+          "maBan": "Lãnh đạo đội",
+          "vaiTro": "Tổ trưởng",
+          "dienThoai": "0903.921.567"
+        },
+        {
+          "stt": 2,
+          "hoTen": "Trần Anh Khoa",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ phó",
+          "dienThoai": "0913.727.072"
+        },
+        {
+          "stt": 3,
+          "hoTen": "Bùi Thị Tuyết Trinh",
+          "maBan": "BP HHNK",
+          "vaiTro": "Thành viên",
+          "dienThoai": "0919.888.879"
+        },
+        {
+          "stt": 4,
+          "hoTen": "Nguyễn Nam Khánh",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 1",
+          "dienThoai": "0972.282.686"
+        },
+        {
+          "stt": 5,
+          "hoTen": "Hồ Thụy Mỹ Linh",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 1",
+          "dienThoai": "0908.231.385"
+        },
+        {
+          "stt": 6,
+          "hoTen": "Tô Hải Yến",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 2",
+          "dienThoai": "0918.319.685"
+        },
+        {
+          "stt": 7,
+          "hoTen": "Nguyễn Thị Thủy",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 2",
+          "dienThoai": "0903.753.183"
+        },
+        {
+          "stt": 8,
+          "hoTen": "Nguyễn Thị Hồng Thắm",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 3",
+          "dienThoai": "0983.070.607"
+        },
+        {
+          "stt": 9,
+          "hoTen": "Bùi Thế Trọng",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 3",
+          "dienThoai": "0904.818.000"
+        },
+        {
+          "stt": 10,
+          "hoTen": "Nguyễn Đăng Hưng",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 4",
+          "dienThoai": "0387.925.046"
+        },
+        {
+          "stt": 11,
+          "hoTen": "Nguyễn Đăng Khuê",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 4",
+          "dienThoai": "0918.326.262"
+        },
+        {
+          "stt": 12,
+          "hoTen": "Hoàng Ngô Việt Hà",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 5",
+          "dienThoai": "0919.717.777"
+        },
+        {
+          "stt": 13,
+          "hoTen": "Trần Thị Thu Hương",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 5",
+          "dienThoai": "0902.532.972"
+        },
+        {
+          "stt": 14,
+          "hoTen": "Nguyễn Thị Thu Huyền",
+          "maBan": "BP HHNK",
+          "vaiTro": "Tổ nghiệp vụ 5",
+          "dienThoai": "0988.519.052"
+        },
+        {
+          "stt": 15,
+          "hoTen": "Nguyễn Quang Vinh",
+          "maBan": "BP HHNK",
+          "vaiTro": "Thành viên bước 3",
+          "dienThoai": "0913.619.696"
+        },
+        {
+          "stt": 16,
+          "hoTen": "Trần Minh Tâm",
+          "maBan": "BP HHNK",
+          "vaiTro": "Thành viên bước 3",
+          "dienThoai": "0983.681.686"
+        }
+      ]
+    }
   ]
 }
