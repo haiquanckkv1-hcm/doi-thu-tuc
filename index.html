@@ -115,11 +115,12 @@
         }
         .tab-buttons { 
             display: inline-flex; 
+            flex-direction: row; /* Ép luôn nằm ngang */
             background: rgba(255, 255, 255, 0.5); 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 6px; 
-            border-radius: 50px; /* Khung kén bo tròn mạnh */
+            border-radius: 50px; 
             border: 1px solid rgba(255, 255, 255, 0.9); 
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.05);
             width: fit-content;
@@ -130,7 +131,7 @@
             color: #555; 
             border: none; 
             padding: 10px 20px; 
-            border-radius: 40px; /* Nút con bo tròn lọt thỏm bên trong */
+            border-radius: 40px; 
             font-size: 14px; 
             font-weight: bold; 
             cursor: pointer; 
@@ -244,20 +245,19 @@
             .fb-banner { font-size: 12px; padding: 5px 15px 5px 6px; }
             .fb-logo { width: 30px; height: 30px; }
             
-            /* Responsive cho Tab Segmented Control trên điện thoại */
+            /* Sửa lỗi Segmented Control trên mobile: Ép nằm 1 dòng */
             .tab-buttons { 
-                flex-direction: column; /* Gập các nút thành hàng dọc để không ép chữ */
-                border-radius: 20px; 
+                flex-direction: row; /* Giữ nguyên 1 hàng ngang */
                 width: 100%; 
+                padding: 4px; /* Giảm padding hộp kén */
             }
             .tab-btn { 
-                width: 100%; 
-                border-radius: 14px; 
-                padding: 12px;
-                margin-bottom: 4px;
-                white-space: normal; /* Cho phép rớt dòng nhẹ nếu tên tab quá dài */
+                font-size: 11px; /* Thu nhỏ chữ */
+                padding: 8px 4px; /* Giảm khoảng cách để vừa 3 tab */
+                border-radius: 30px; 
+                white-space: normal; /* Cho phép chữ tự xuống 2 dòng trong tab nếu cần */
+                line-height: 1.2;
             }
-            .tab-btn:last-child { margin-bottom: 0; }
         }
 
         @media (min-width: 768px) {
@@ -321,9 +321,10 @@
         <!-- TABS THEO PHONG CÁCH SEGMENTED CONTROL -->
         <div class="tab-wrapper">
             <div class="tab-buttons">
+                <!-- Rút gọn tên tab để đẹp trên 1 dòng ở màn hình điện thoại -->
                 <button class="tab-btn active" onclick="openTab(event, 'nhap-khau')">Nhập khẩu</button>
                 <button class="tab-btn" onclick="openTab(event, 'xuat-khau')">Xuất khẩu</button>
-                <button class="tab-btn" onclick="openTab(event, 'ho-tro')">Hỗ trợ - Vướng mắc</button>
+                <button class="tab-btn" onclick="openTab(event, 'ho-tro')">Hỗ trợ</button>
             </div>
         </div>
 
